@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webapp
+    env: estudo
+  name: webapp
+  namespace: estudo-felipe
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+        env: estudo 
+    spec:
+      containers:
+      - image: nginx:versao-que-nao-existe
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 200m
+            memory: 128Mi
+          requests: 
+            cpu: 100m
+            memory: 64Mi
+

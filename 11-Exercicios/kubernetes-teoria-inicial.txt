@@ -1,0 +1,1695 @@
+Exercício 1
+
+❯ k get nodes -owide
+NAME          STATUS   ROLES           AGE   VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION                CONTAINER-RUNTIME
+k8s-master    Ready    control-plane   10d   v1.35.3   192.168.3.30   <none>        Debian GNU/Linux 13 (trixie)   6.12.74+deb13+1-cloud-amd64   containerd://2.2.2
+k8s-worker1   Ready    worker          10d   v1.35.3   192.168.3.31   <none>        Debian GNU/Linux 13 (trixie)   6.12.74+deb13+1-cloud-amd64   containerd://2.2.2
+k8s-worker2   Ready    worker          10d   v1.35.3   192.168.3.32   <none>        Debian GNU/Linux 13 (trixie)   6.12.74+deb13+1-cloud-amd64   containerd://2.2.2
+❯ k get ns
+NAME                 STATUS   AGE
+calico-system        Active   10d
+cert-manager         Active   8d
+controle-gastos      Active   8d
+cotacoes             Active   9d
+databases            Active   8d
+default              Active   10d
+giropops             Active   9d
+ingress-nginx        Active   9d
+kube-node-lease      Active   10d
+kube-public          Active   10d
+kube-system          Active   10d
+label-teste          Active   6d23h
+local-path-storage   Active   8d
+metallb-system       Active   9d
+promobot             Active   6d
+tigera-operator      Active   10d
+❯ k get pos -A
+error: the server doesn't have a resource type "pos"
+❯ k get pod -A
+NAMESPACE            NAME                                       READY   STATUS      RESTARTS      AGE
+calico-system        calico-apiserver-5d46478495-4vjsn          1/1     Running     0             10d
+calico-system        calico-apiserver-5d46478495-jfpfw          1/1     Running     0             10d
+calico-system        calico-kube-controllers-6b75549c55-vj4nl   1/1     Running     0             10d
+calico-system        calico-node-lkf68                          1/1     Running     0             10d
+calico-system        calico-node-wzs8t                          1/1     Running     0             10d
+calico-system        calico-node-xt2qk                          1/1     Running     0             10d
+calico-system        calico-typha-59fd57b8db-gr224              1/1     Running     0             10d
+calico-system        calico-typha-59fd57b8db-z77tz              1/1     Running     0             10d
+calico-system        csi-node-driver-wrd8x                      2/2     Running     0             10d
+calico-system        csi-node-driver-xnq6k                      2/2     Running     0             10d
+calico-system        csi-node-driver-zg6mr                      2/2     Running     0             10d
+calico-system        goldmane-58f96f7c58-dtdws                  1/1     Running     0             10d
+calico-system        whisker-5cdb77b74c-dgvt4                   2/2     Running     0             10d
+cert-manager         cert-manager-67596fb4d7-xfkck              1/1     Running     0             8d
+cert-manager         cert-manager-cainjector-5fcbcd7fb-8nvwk    1/1     Running     0             8d
+cert-manager         cert-manager-webhook-864d6c4d87-qqxjl      1/1     Running     0             8d
+controle-gastos      app-84bf87cd76-v6kzh                       1/1     Running     0             7d21h
+cotacoes             cotacoes-54d57557-cgnc4                    1/1     Running     0             7d1h
+cotacoes             cotacoes-54d57557-gtdnb                    1/1     Running     0             7d1h
+cotacoes             redis-7f6cd5bc7f-4bjhb                     1/1     Running     0             9d
+databases            postgres-0                                 1/1     Running     1 (8d ago)    8d
+giropops             giropops-senhas-7cc94f579b-b99lg           1/1     Running     0             3d
+giropops             giropops-senhas-7cc94f579b-nq682           1/1     Running     0             3d
+giropops             redis-deployment-7d859f6bc4-k8b88          1/1     Running     0             9d
+ingress-nginx        ingress-nginx-controller-f85ff6d7d-hvv27   1/1     Running     0             9d
+kube-system          coredns-7d764666f9-l8njg                   1/1     Running     0             10d
+kube-system          coredns-7d764666f9-zkjnw                   1/1     Running     0             10d
+kube-system          csi-nfs-controller-797df7f48b-f2qtl        5/5     Running     1 (8d ago)    8d
+kube-system          csi-nfs-node-54ngj                         3/3     Running     0             8d
+kube-system          csi-nfs-node-76djn                         3/3     Running     0             8d
+kube-system          csi-nfs-node-r6h2g                         3/3     Running     0             8d
+kube-system          etcd-k8s-master                            1/1     Running     0             10d
+kube-system          kube-apiserver-k8s-master                  1/1     Running     0             10d
+kube-system          kube-controller-manager-k8s-master         1/1     Running     0             10d
+kube-system          kube-proxy-42hmk                           1/1     Running     0             10d
+kube-system          kube-proxy-6nhd6                           1/1     Running     0             10d
+kube-system          kube-proxy-j9bl6                           1/1     Running     0             10d
+kube-system          kube-scheduler-k8s-master                  1/1     Running     0             10d
+label-teste          teste                                      1/1     Running     0             6d22h
+local-path-storage   local-path-provisioner-7d4d469b6-sskdr     1/1     Running     0             8d
+metallb-system       controller-66bdd896c6-7h7sm                1/1     Running     0             9d
+metallb-system       speaker-8bc7t                              1/1     Running     0             9d
+metallb-system       speaker-jrj6c                              1/1     Running     0             9d
+metallb-system       speaker-mvpnh                              1/1     Running     0             9d
+promobot             evolution-api-d6cff7467-s5bmv              1/1     Running     0             3d1h
+promobot             n8n-79465cd5f9-5rmws                       1/1     Running     0             3d17h
+promobot             postgres-backup-29593920-vk5s8             0/1     Completed   0             5d13h
+promobot             postgres-backup-29595360-947xp             0/1     Completed   0             4d13h
+promobot             postgres-backup-29596800-n242l             0/1     Completed   0             3d13h
+promobot             postgres-backup-29598240-gt686             0/1     Completed   0             2d13h
+promobot             postgres-backup-29599680-wbb7c             0/1     Completed   0             37h
+promobot             postgres-backup-29601120-82xt6             0/1     Completed   0             13h
+promobot             redis-55dc4f675d-tv7ws                     1/1     Running     0             6d
+tigera-operator      tigera-operator-6cf4cccc57-d4bh9           1/1     Running     1 (10d ago)   10d
+
+❯ k get pod -n giropops -owide
+NAME                                READY   STATUS    RESTARTS   AGE   IP               NODE          NOMINATED NODE   READINESS GATES
+giropops-senhas-7cc94f579b-b99lg    1/1     Running   0          3d    192.168.194.95   k8s-worker1   <none>           <none>
+giropops-senhas-7cc94f579b-nq682    1/1     Running   0          3d    192.168.126.43   k8s-worker2   <none>           <none>
+redis-deployment-7d859f6bc4-k8b88   1/1     Running   0          9d    192.168.126.7    k8s-worker2   <none>           <none>
+❯ k describe node k8s-worker1
+Name:               k8s-worker1
+Roles:              worker
+Labels:             beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/os=linux
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=k8s-worker1
+                    kubernetes.io/os=linux
+                    node-role.kubernetes.io/worker=worker
+Annotations:        csi.volume.kubernetes.io/nodeid: {"csi.tigera.io":"k8s-worker1","nfs.csi.k8s.io":"k8s-worker1"}
+                    node.alpha.kubernetes.io/ttl: 0
+                    projectcalico.org/IPv4Address: 192.168.3.31/24
+                    projectcalico.org/IPv4VXLANTunnelAddr: 192.168.194.64
+                    projectcalico.org/Interfaces: [{"name":"eth0","addresses":["192.168.3.31"]}]
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Thu, 02 Apr 2026 20:02:00 -0300
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  k8s-worker1
+  AcquireTime:     <unset>
+  RenewTime:       Mon, 13 Apr 2026 18:47:11 -0300
+Conditions:
+  Type                 Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----                 ------  -----------------                 ------------------                ------                       -------
+  NetworkUnavailable   False   Thu, 02 Apr 2026 20:09:33 -0300   Thu, 02 Apr 2026 20:09:33 -0300   CalicoIsUp                   Calico is running on this node
+  MemoryPressure       False   Mon, 13 Apr 2026 18:45:26 -0300   Thu, 02 Apr 2026 20:02:00 -0300   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure         False   Mon, 13 Apr 2026 18:45:26 -0300   Thu, 02 Apr 2026 20:02:00 -0300   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure          False   Mon, 13 Apr 2026 18:45:26 -0300   Thu, 02 Apr 2026 20:02:00 -0300   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready                True    Mon, 13 Apr 2026 18:45:26 -0300   Thu, 02 Apr 2026 20:09:39 -0300   KubeletReady                 kubelet is posting ready status
+Addresses:
+  InternalIP:  192.168.3.31
+  Hostname:    k8s-worker1
+Capacity:
+  cpu:                2
+  ephemeral-storage:  32815812Ki
+  hugepages-2Mi:      0
+  memory:             3996964Ki
+  pods:               110
+Allocatable:
+  cpu:                2
+  ephemeral-storage:  30243052290
+  hugepages-2Mi:      0
+  memory:             3894564Ki
+  pods:               110
+System Info:
+  Machine ID:                 de4c10b5a49e4c968c0b9bd5e93c66e5
+  System UUID:                de4c10b5-a49e-4c96-8c0b-9bd5e93c66e5
+  Boot ID:                    64f695ac-6ca9-4c58-9ce8-6628d973a742
+  Kernel Version:             6.12.74+deb13+1-cloud-amd64
+  OS Image:                   Debian GNU/Linux 13 (trixie)
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://2.2.2
+  Kubelet Version:            v1.35.3
+  Kube-Proxy Version:
+PodCIDR:                      192.168.1.0/24
+PodCIDRs:                     192.168.1.0/24
+Non-terminated Pods:          (19 in total)
+  Namespace                   Name                                        CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                        ------------  ----------  ---------------  -------------  ---
+  calico-system               calico-apiserver-5d46478495-4vjsn           0 (0%)        0 (0%)      0 (0%)           0 (0%)         10d
+  calico-system               calico-apiserver-5d46478495-jfpfw           0 (0%)        0 (0%)      0 (0%)           0 (0%)         10d
+  calico-system               calico-kube-controllers-6b75549c55-vj4nl    0 (0%)        0 (0%)      0 (0%)           0 (0%)         10d
+  calico-system               calico-node-wzs8t                           0 (0%)        0 (0%)      0 (0%)           0 (0%)         10d
+  calico-system               calico-typha-59fd57b8db-z77tz               0 (0%)        0 (0%)      0 (0%)           0 (0%)         10d
+  calico-system               csi-node-driver-zg6mr                       0 (0%)        0 (0%)      0 (0%)           0 (0%)         10d
+  calico-system               goldmane-58f96f7c58-dtdws                   0 (0%)        0 (0%)      0 (0%)           0 (0%)         10d
+  calico-system               whisker-5cdb77b74c-dgvt4                    0 (0%)        0 (0%)      0 (0%)           0 (0%)         10d
+  cert-manager                cert-manager-cainjector-5fcbcd7fb-8nvwk     0 (0%)        0 (0%)      0 (0%)           0 (0%)         8d
+  cert-manager                cert-manager-webhook-864d6c4d87-qqxjl       0 (0%)        0 (0%)      0 (0%)           0 (0%)         8d
+  controle-gastos             app-84bf87cd76-v6kzh                        100m (5%)     250m (12%)  128Mi (3%)       256Mi (6%)     7d21h
+  cotacoes                    cotacoes-54d57557-cgnc4                     100m (5%)     500m (25%)  128Mi (3%)       256Mi (6%)     7d1h
+  giropops                    giropops-senhas-7cc94f579b-b99lg            0 (0%)        0 (0%)      0 (0%)           0 (0%)         3d
+  kube-system                 coredns-7d764666f9-l8njg                    100m (5%)     0 (0%)      70Mi (1%)        170Mi (4%)     10d
+  kube-system                 coredns-7d764666f9-zkjnw                    100m (5%)     0 (0%)      70Mi (1%)        170Mi (4%)     10d
+  kube-system                 csi-nfs-node-76djn                          30m (1%)      0 (0%)      60Mi (1%)        500Mi (13%)    8d
+  kube-system                 kube-proxy-j9bl6                            0 (0%)        0 (0%)      0 (0%)           0 (0%)         10d
+  metallb-system              speaker-jrj6c                               0 (0%)        0 (0%)      0 (0%)           0 (0%)         9d
+  promobot                    n8n-79465cd5f9-5rmws                        100m (5%)     1 (50%)     256Mi (6%)       1Gi (26%)      3d17h
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests     Limits
+  --------           --------     ------
+  cpu                530m (26%)   1750m (87%)
+  memory             712Mi (18%)  2376Mi (62%)
+  ephemeral-storage  0 (0%)       0 (0%)
+  hugepages-2Mi      0 (0%)       0 (0%)
+Events:              <none>
+
+                                                                                                                                          ░▒▓ at 18:47:13  
+❯ k get -n giropops service,deployment
+NAME                      TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+service/giropops-senhas   ClusterIP   10.105.154.184   <none>        5000/TCP   9d
+service/redis-service     ClusterIP   10.108.234.104   <none>        6379/TCP   9d
+
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/giropops-senhas    2/2     2            2           9d
+deployment.apps/redis-deployment   1/1     1            1           9d
+
+Exercício 2
+
+❯ k create ns estudo-felipe
+namespace/estudo-felipe created
+❯ k run -n estudo-felipe meu-nginx --image nginx:1.27 --labels=app=meu-nginx
+pod/meu-nginx created
+❯ k get pod -n estudo-felipe
+NAME        READY   STATUS              RESTARTS   AGE
+meu-nginx   0/1     ContainerCreating   0          13s
+❯ k get pod -n estudo-felipe
+NAME        READY   STATUS    RESTARTS   AGE
+meu-nginx   1/1     Running   0          17s
+❯ k logs -n estudo-felipe pods/meu-nginx
+/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
+/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+10-listen-on-ipv6-by-default.sh: info: Getting the checksum of /etc/nginx/conf.d/default.conf
+10-listen-on-ipv6-by-default.sh: info: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf
+/docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
+/docker-entrypoint.sh: Configuration complete; ready for start up
+2026/04/13 21:53:34 [notice] 1#1: using the "epoll" event method
+2026/04/13 21:53:34 [notice] 1#1: nginx/1.27.5
+2026/04/13 21:53:34 [notice] 1#1: built by gcc 12.2.0 (Debian 12.2.0-14) 
+2026/04/13 21:53:34 [notice] 1#1: OS: Linux 6.12.74+deb13+1-cloud-amd64
+2026/04/13 21:53:34 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:524288
+2026/04/13 21:53:34 [notice] 1#1: start worker processes
+2026/04/13 21:53:34 [notice] 1#1: start worker process 29
+2026/04/13 21:53:34 [notice] 1#1: start worker process 30
+❯ k exec -it -n estudo-felipe meu-nginx -- bash
+root@meu-nginx:/# curl localhost
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+root@meu-nginx:/# 
+❯ k delete pod -n estudo-felipe meu-nginx
+pod "meu-nginx" deleted from estudo-felipe namespace
+
+Exercício 3
+
+❯ k create deployment -n estudo-felipe --name webapp --image nginx:1.27 --replicas 3 --port 80 --dry-run=client -oyaml | k neat > deploy-exerc-3.yaml
+error: unknown flag: --name
+See 'kubectl create deployment --help' for usage.
+❯ k create deployment -n estudo-felipe webapp --image nginx:1.27 --replicas 3 --port 80 --dry-run=client -oyaml | k neat > deploy-exerc-3.yaml
+❯ vim deploy-exerc-3.yaml
+❯ k apply -f deploy-exerc-3.yaml
+deployment.apps/webapp created
+❯ k expose deploy -n estudo-felipe webapp 80:8080 --dry-run=client -oyaml > service-exerc-3.yaml
+Error from server (NotFound): deployments.apps "80:8080" not found
+❯ k expose deploy -n estudo-felipe webapp 8080 --dry-run=client -oyaml > service-exerc-3.yaml
+Error from server (NotFound): deployments.apps "8080" not found
+❯ k expose deploy -n estudo-felipe webapp --port 8080 --dry-run=client -oyaml > service-exerc-3.yaml
+❯ vim service-exerc-3.yaml
+❯ k apply -f service-exerc-3.yaml
+service/webapp created
+❯ vim service-exerc-3.yaml
+❯ k delete svc -n estudo-felipe webapp
+service "webapp" deleted from estudo-felipe namespace
+❯ k apply -f service-exerc-3.yaml
+service/webapp-svc created
+❯ k port-forward -n estudo-felipe svc/webapp-svc 8080:80
+Forwarding from 127.0.0.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
+Handling connection for 8080
+Handling connection for 8080
+E0413 19:17:11.672539   11493 portforward.go:424] "Unhandled Error" err="an error occurred forwarding 8080 -> 8080: error forwarding port 8080 to pod ed8e01df4d9c79469ad92db14e93a7744a5945704ebef1ad24818692e6575c67, uid : failed to execute portforward in network namespace \"/var/run/netns/cni-e55874dc-6f88-bc99-bd36-832e6ba39d98\": failed to connect to localhost:8080 inside namespace \"ed8e01df4d9c79469ad92db14e93a7744a5945704ebef1ad24818692e6575c67\", IPv4: dial tcp4 127.0.0.1:8080: connect: connection refused IPv6 dial tcp6 [::1]:8080: connect: connection refused "
+error: lost connection to pod
+❯ k get pod -n estudo-felipe -owide
+NAME                      READY   STATUS    RESTARTS   AGE   IP               NODE          NOMINATED NODE   READINESS GATES
+webapp-7b7c6f5945-bm4vn   1/1     Running   0          11m   192.168.194.99   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-j7hc2   1/1     Running   0          11m   192.168.126.46   k8s-worker2   <none>           <none>
+webapp-7b7c6f5945-tdngs   1/1     Running   0          11m   192.168.126.45   k8s-worker2   <none>           <none>
+❯ k get svc -n estudo-felipe -owide
+NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE     SELECTOR
+webapp-svc   ClusterIP   10.99.180.45   <none>        80/TCP    3m17s   app=webapp
+❯ vim service-exerc-3.yaml
+❯ k apply -f service-exerc-3.yaml
+service/webapp-svc configured
+❯ k port-forward -n estudo-felipe svc/webapp-svc 8080:80
+Forwarding from 127.0.0.1:8080 -> 80
+Forwarding from [::1]:8080 -> 80
+Handling connection for 8080
+Handling connection for 8080
+^C
+❯ k get svc -n estudo-felipe -owide
+NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE    SELECTOR
+webapp-svc   ClusterIP   10.99.180.45   <none>        80/TCP    5m9s   app=webapp
+❯ k get endpoint  -n estudo-felipe -owide
+error: the server doesn't have a resource type "endpoint"
+❯ k get endpoints -n estudo-felipe -owide
+Warning: v1 Endpoints is deprecated in v1.33+; use discovery.k8s.io/v1 EndpointSlice
+NAME         ENDPOINTS                                               AGE
+webapp-svc   192.168.126.45:80,192.168.126.46:80,192.168.194.99:80   5m26s
+
+Exercício 4
+
+k delete pod -n estudo-felipe webapp-7b7c6f5945-bm4vn
+pod "webapp-7b7c6f5945-bm4vn" deleted from estudo-felipe namespace
+
+❯ k get pod -n estudo-felipe -owide -w
+NAME                      READY   STATUS    RESTARTS   AGE   IP               NODE          NOMINATED NODE   READINESS GATES
+webapp-7b7c6f5945-bm4vn   1/1     Running   0          17m   192.168.194.99   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-j7hc2   1/1     Running   0          17m   192.168.126.46   k8s-worker2   <none>           <none>
+webapp-7b7c6f5945-tdngs   1/1     Running   0          17m   192.168.126.45   k8s-worker2   <none>           <none>
+webapp-7b7c6f5945-bm4vn   1/1     Terminating   0          18m   192.168.194.99   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-jk5vz   0/1     Pending       0          0s    <none>           <none>        <none>           <none>
+webapp-7b7c6f5945-bm4vn   1/1     Terminating   0          18m   192.168.194.99   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-jk5vz   0/1     Pending       0          0s    <none>           k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-jk5vz   0/1     ContainerCreating   0          1s    <none>           k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-bm4vn   1/1     Terminating         0          18m   192.168.194.99   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-bm4vn   0/1     Completed           0          18m   192.168.194.99   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-jk5vz   0/1     ContainerCreating   0          1s    <none>           k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-bm4vn   0/1     Completed           0          18m   192.168.194.99   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-bm4vn   0/1     Completed           0          18m   192.168.194.99   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-jk5vz   1/1     Running             0          2s    192.168.194.100   k8s-worker1   <none>           <none>
+
+Tempo 3s
+
+k delete pod -n estudo-felipe webapp-7b7c6f5945-fv8zc webapp-7b7c6f5945-tdngs
+pod "webapp-7b7c6f5945-fv8zc" deleted from estudo-felipe namespace
+pod "webapp-7b7c6f5945-tdngs" deleted from estudo-felipe namespace
+
+webapp-7b7c6f5945-fv8zc   1/1     Running   0          55s     192.168.194.101   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-jk5vz   1/1     Running   0          3m55s   192.168.194.100   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-tdngs   1/1     Running   0          22m     192.168.126.45    k8s-worker2   <none>           <none>
+webapp-7b7c6f5945-fv8zc   1/1     Terminating   0          80s     192.168.194.101   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-tdngs   1/1     Terminating   0          22m     192.168.126.45    k8s-worker2   <none>           <none>
+webapp-7b7c6f5945-fv8zc   1/1     Terminating   0          80s     192.168.194.101   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-8vvxg   0/1     Pending       0          0s      <none>            <none>        <none>           <none>
+webapp-7b7c6f5945-tdngs   1/1     Terminating   0          22m     192.168.126.45    k8s-worker2   <none>           <none>
+webapp-7b7c6f5945-8vvxg   0/1     Pending       0          0s      <none>            k8s-worker2   <none>           <none>
+webapp-7b7c6f5945-hgknq   0/1     Pending       0          0s      <none>            <none>        <none>           <none>
+webapp-7b7c6f5945-8vvxg   0/1     ContainerCreating   0          0s      <none>            k8s-worker2   <none>           <none>
+webapp-7b7c6f5945-hgknq   0/1     Pending             0          0s      <none>            k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-hgknq   0/1     ContainerCreating   0          0s      <none>            k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-fv8zc   1/1     Terminating         0          80s     192.168.194.101   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-fv8zc   0/1     Completed           0          80s     192.168.194.101   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-tdngs   1/1     Terminating         0          22m     192.168.126.45    k8s-worker2   <none>           <none>
+webapp-7b7c6f5945-hgknq   0/1     ContainerCreating   0          1s      <none>            k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-fv8zc   0/1     Completed           0          81s     192.168.194.101   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-fv8zc   0/1     Completed           0          81s     192.168.194.101   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-tdngs   0/1     Completed           0          22m     192.168.126.45    k8s-worker2   <none>           <none>
+webapp-7b7c6f5945-8vvxg   0/1     ContainerCreating   0          1s      <none>            k8s-worker2   <none>           <none>
+webapp-7b7c6f5945-tdngs   0/1     Completed           0          22m     192.168.126.45    k8s-worker2   <none>           <none>
+webapp-7b7c6f5945-tdngs   0/1     Completed           0          22m     192.168.126.45    k8s-worker2   <none>           <none>
+webapp-7b7c6f5945-hgknq   1/1     Running             0          2s      192.168.194.102   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-8vvxg   1/1     Running             0          2s      192.168.126.47    k8s-worker2   <none>           <none>
+
+
+k scale deployment -n estudo-felipe webapp --replicas 5
+deployment.apps/webapp scaled
+❯ k scale deployment -n estudo-felipe webapp --replicas 2
+deployment.apps/webapp scaled
+
+❯ k get pod -n estudo-felipe -owide -w
+NAME                      READY   STATUS    RESTARTS   AGE     IP                NODE          NOMINATED NODE   READINESS GATES
+webapp-7b7c6f5945-8vvxg   1/1     Running   0          2m26s   192.168.126.47    k8s-worker2   <none>           <none>
+webapp-7b7c6f5945-hgjxv   1/1     Running   0          44s     192.168.126.48    k8s-worker2   <none>           <none>
+webapp-7b7c6f5945-jk5vz   1/1     Running   0          6m46s   192.168.194.100   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-t2zm8   0/1     Pending   0          0s      <none>            <none>        <none>           <none>
+webapp-7b7c6f5945-f2sm7   0/1     Pending   0          0s      <none>            <none>        <none>           <none>
+webapp-7b7c6f5945-t2zm8   0/1     Pending   0          0s      <none>            k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-f2sm7   0/1     Pending   0          0s      <none>            k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-t2zm8   0/1     ContainerCreating   0          0s      <none>            k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-f2sm7   0/1     ContainerCreating   0          0s      <none>            k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-f2sm7   0/1     ContainerCreating   0          1s      <none>            k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-t2zm8   0/1     ContainerCreating   0          1s      <none>            k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-f2sm7   1/1     Running             0          1s      192.168.194.104   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-t2zm8   1/1     Running             0          1s      192.168.194.105   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-f2sm7   1/1     Terminating         0          15s     192.168.194.104   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-t2zm8   1/1     Terminating         0          15s     192.168.194.105   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-jk5vz   1/1     Terminating         0          7m8s    192.168.194.100   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-f2sm7   1/1     Terminating         0          15s     192.168.194.104   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-t2zm8   1/1     Terminating         0          15s     192.168.194.105   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-jk5vz   1/1     Terminating         0          7m8s    192.168.194.100   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-f2sm7   1/1     Terminating         0          15s     192.168.194.104   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-t2zm8   1/1     Terminating         0          15s     192.168.194.105   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-jk5vz   1/1     Terminating         0          7m8s    192.168.194.100   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-f2sm7   0/1     Completed           0          15s     192.168.194.104   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-t2zm8   0/1     Completed           0          15s     192.168.194.105   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-jk5vz   0/1     Completed           0          7m9s    192.168.194.100   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-t2zm8   0/1     Completed           0          16s     192.168.194.105   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-t2zm8   0/1     Completed           0          16s     192.168.194.105   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-jk5vz   0/1     Completed           0          7m9s    192.168.194.100   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-jk5vz   0/1     Completed           0          7m9s    192.168.194.100   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-f2sm7   0/1     Completed           0          16s     192.168.194.104   k8s-worker1   <none>           <none>
+webapp-7b7c6f5945-f2sm7   0/1     Completed           0          16s     192.168.194.104   k8s-worker1   <none>           <none>
+
+Exercício 5
+
+❯ k rollout status -n estudo-felipe deployment webapp
+deployment "webapp" successfully rolled out
+❯ k rollout status -n estudo-felipe deployment webapp
+Waiting for deployment "webapp" rollout to finish: 1 out of 3 new replicas have been updated...
+Waiting for deployment "webapp" rollout to finish: 1 out of 3 new replicas have been updated...
+Waiting for deployment "webapp" rollout to finish: 1 out of 3 new replicas have been updated...
+Waiting for deployment "webapp" rollout to finish: 1 out of 3 new replicas have been updated...
+Waiting for deployment "webapp" rollout to finish: 2 out of 3 new replicas have been updated...
+Waiting for deployment "webapp" rollout to finish: 2 out of 3 new replicas have been updated...
+Waiting for deployment "webapp" rollout to finish: 2 out of 3 new replicas have been updated...
+Waiting for deployment "webapp" rollout to finish: 2 out of 3 new replicas have been updated...
+Waiting for deployment "webapp" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "webapp" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "webapp" rollout to finish: 1 old replicas are pending termination...
+deployment "webapp" successfully rolled out
+
+❯ k rollout history -n estudo-felipe deployment webapp
+deployment.apps/webapp 
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+
+❯ vim deploy-exerc-3.yaml
+❯ k apply -f deploy-exerc-3.yaml
+deployment.apps/webapp configured
+❯ k rollout history -n estudo-felipe deployment webapp
+deployment.apps/webapp 
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+3         <none>
+
+❯ k get events -n estudo-felipe --sort-by='.lastTimestamp'
+LAST SEEN   TYPE      REASON              OBJECT                         MESSAGE
+55m         Normal    Scheduled           pod/meu-nginx                  Successfully assigned estudo-felipe/meu-nginx to k8s-worker2
+55m         Normal    Pulling             pod/meu-nginx                  Pulling image "nginx:1.27"
+54m         Normal    Pulled              pod/meu-nginx                  Successfully pulled image "nginx:1.27" in 12.977s (12.977s including waiting). Image size: 72406859 bytes.
+54m         Normal    Created             pod/meu-nginx                  Container created
+54m         Normal    Started             pod/meu-nginx                  Container started
+51m         Normal    Killing             pod/meu-nginx                  Stopping container meu-nginx
+41m         Normal    Scheduled           pod/webapp-7b7c6f5945-bm4vn    Successfully assigned estudo-felipe/webapp-7b7c6f5945-bm4vn to k8s-worker1
+41m         Normal    Scheduled           pod/webapp-7b7c6f5945-j7hc2    Successfully assigned estudo-felipe/webapp-7b7c6f5945-j7hc2 to k8s-worker2
+41m         Normal    Scheduled           pod/webapp-7b7c6f5945-tdngs    Successfully assigned estudo-felipe/webapp-7b7c6f5945-tdngs to k8s-worker2
+41m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 0 to 3
+41m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-bm4vn
+41m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-j7hc2
+41m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-tdngs
+41m         Normal    Pulling             pod/webapp-7b7c6f5945-bm4vn    Pulling image "nginx:1.27"
+41m         Normal    Started             pod/webapp-7b7c6f5945-j7hc2    Container started
+41m         Normal    Started             pod/webapp-7b7c6f5945-tdngs    Container started
+41m         Normal    Created             pod/webapp-7b7c6f5945-tdngs    Container created
+41m         Normal    Pulled              pod/webapp-7b7c6f5945-tdngs    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+41m         Normal    Pulled              pod/webapp-7b7c6f5945-j7hc2    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+41m         Normal    Created             pod/webapp-7b7c6f5945-j7hc2    Container created
+41m         Normal    Pulled              pod/webapp-7b7c6f5945-bm4vn    Successfully pulled image "nginx:1.27" in 8.356s (8.356s including waiting). Image size: 72406859 bytes.
+41m         Normal    Created             pod/webapp-7b7c6f5945-bm4vn    Container created
+41m         Normal    Started             pod/webapp-7b7c6f5945-bm4vn    Container started
+22m         Normal    Scheduled           pod/webapp-7b7c6f5945-jk5vz    Successfully assigned estudo-felipe/webapp-7b7c6f5945-jk5vz to k8s-worker1
+22m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-jk5vz
+22m         Normal    Killing             pod/webapp-7b7c6f5945-bm4vn    Stopping container nginx
+22m         Normal    Pulled              pod/webapp-7b7c6f5945-jk5vz    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+22m         Normal    Created             pod/webapp-7b7c6f5945-jk5vz    Container created
+22m         Normal    Started             pod/webapp-7b7c6f5945-jk5vz    Container started
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-fv8zc
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-fv8zc    Successfully assigned estudo-felipe/webapp-7b7c6f5945-fv8zc to k8s-worker1
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-fv8zc    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-fv8zc    Container created
+19m         Normal    Killing             pod/webapp-7b7c6f5945-j7hc2    Stopping container nginx
+19m         Normal    Started             pod/webapp-7b7c6f5945-fv8zc    Container started
+18m         Normal    Killing             pod/webapp-7b7c6f5945-fv8zc    Stopping container nginx
+18m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgknq    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgknq to k8s-worker1
+18m         Normal    Killing             pod/webapp-7b7c6f5945-tdngs    Stopping container nginx
+18m         Normal    Scheduled           pod/webapp-7b7c6f5945-8vvxg    Successfully assigned estudo-felipe/webapp-7b7c6f5945-8vvxg to k8s-worker2
+18m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-8vvxg
+18m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgknq
+18m         Normal    Pulled              pod/webapp-7b7c6f5945-hgknq    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+18m         Normal    Created             pod/webapp-7b7c6f5945-hgknq    Container created
+18m         Normal    Started             pod/webapp-7b7c6f5945-hgknq    Container started
+18m         Normal    Pulled              pod/webapp-7b7c6f5945-8vvxg    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+18m         Normal    Started             pod/webapp-7b7c6f5945-8vvxg    Container started
+18m         Normal    Created             pod/webapp-7b7c6f5945-8vvxg    Container created
+16m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-p2764
+16m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgjxv    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgjxv to k8s-worker2
+16m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgjxv
+16m         Normal    Scheduled           pod/webapp-7b7c6f5945-p2764    Successfully assigned estudo-felipe/webapp-7b7c6f5945-p2764 to k8s-worker1
+16m         Normal    Created             pod/webapp-7b7c6f5945-p2764    Container created
+16m         Normal    Started             pod/webapp-7b7c6f5945-p2764    Container started
+16m         Normal    Pulled              pod/webapp-7b7c6f5945-hgjxv    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+16m         Normal    Created             pod/webapp-7b7c6f5945-hgjxv    Container created
+16m         Normal    Started             pod/webapp-7b7c6f5945-hgjxv    Container started
+16m         Normal    Pulled              pod/webapp-7b7c6f5945-p2764    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+16m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgknq
+16m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-p2764
+16m         Normal    Killing             pod/webapp-7b7c6f5945-hgknq    Stopping container nginx
+16m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 3
+16m         Normal    Killing             pod/webapp-7b7c6f5945-p2764    Stopping container nginx
+16m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-t2zm8
+16m         Normal    Scheduled           pod/webapp-7b7c6f5945-t2zm8    Successfully assigned estudo-felipe/webapp-7b7c6f5945-t2zm8 to k8s-worker1
+16m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-f2sm7
+16m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 3 to 5
+16m         Normal    Scheduled           pod/webapp-7b7c6f5945-f2sm7    Successfully assigned estudo-felipe/webapp-7b7c6f5945-f2sm7 to k8s-worker1
+16m         Normal    Created             pod/webapp-7b7c6f5945-t2zm8    Container created
+16m         Normal    Pulled              pod/webapp-7b7c6f5945-f2sm7    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+16m         Normal    Started             pod/webapp-7b7c6f5945-f2sm7    Container started
+16m         Normal    Started             pod/webapp-7b7c6f5945-t2zm8    Container started
+16m         Normal    Pulled              pod/webapp-7b7c6f5945-t2zm8    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+16m         Normal    Created             pod/webapp-7b7c6f5945-f2sm7    Container created
+15m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 2
+15m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-t2zm8
+15m         Normal    Killing             pod/webapp-7b7c6f5945-jk5vz    Stopping container nginx
+15m         Normal    Killing             pod/webapp-7b7c6f5945-f2sm7    Stopping container nginx
+15m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-f2sm7
+15m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-jk5vz
+15m         Normal    Killing             pod/webapp-7b7c6f5945-t2zm8    Stopping container nginx
+6m31s       Normal    Scheduled           pod/webapp-7b7c6f5945-98p7x    Successfully assigned estudo-felipe/webapp-7b7c6f5945-98p7x to k8s-worker1
+6m31s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-6mjg6
+6m31s       Normal    Scheduled           pod/webapp-69f74bb797-6mjg6    Successfully assigned estudo-felipe/webapp-69f74bb797-6mjg6 to k8s-worker1
+6m31s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 2 to 3
+6m31s       Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-98p7x
+6m31s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 0 to 1
+6m30s       Normal    Pulling             pod/webapp-69f74bb797-6mjg6    Pulling image "nginx:1.27-alpine"
+6m30s       Normal    Started             pod/webapp-7b7c6f5945-98p7x    Container started
+6m30s       Normal    Pulled              pod/webapp-7b7c6f5945-98p7x    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+6m30s       Normal    Created             pod/webapp-7b7c6f5945-98p7x    Container created
+6m25s       Normal    Created             pod/webapp-69f74bb797-6mjg6    Container created
+6m25s       Normal    Pulled              pod/webapp-69f74bb797-6mjg6    Successfully pulled image "nginx:1.27-alpine" in 5.433s (5.433s including waiting). Image size: 20984244 bytes.
+6m25s       Normal    Started             pod/webapp-69f74bb797-6mjg6    Container started
+6m24s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-98p7x
+6m24s       Normal    Scheduled           pod/webapp-69f74bb797-28dwq    Successfully assigned estudo-felipe/webapp-69f74bb797-28dwq to k8s-worker2
+6m24s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 1 to 2
+6m24s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-28dwq
+6m24s       Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 3 to 2
+6m24s       Normal    Killing             pod/webapp-7b7c6f5945-98p7x    Stopping container nginx
+6m23s       Normal    Pulling             pod/webapp-69f74bb797-28dwq    Pulling image "nginx:1.27-alpine"
+6m17s       Normal    Created             pod/webapp-69f74bb797-28dwq    Container created
+6m17s       Normal    Pulled              pod/webapp-69f74bb797-28dwq    Successfully pulled image "nginx:1.27-alpine" in 6.538s (6.539s including waiting). Image size: 20984244 bytes.
+6m16s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgjxv
+6m16s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 2 to 3
+6m16s       Normal    Started             pod/webapp-69f74bb797-28dwq    Container started
+6m16s       Normal    Scheduled           pod/webapp-69f74bb797-jrtz4    Successfully assigned estudo-felipe/webapp-69f74bb797-jrtz4 to k8s-worker1
+6m16s       Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 2 to 1
+6m16s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-jrtz4
+6m16s       Normal    Killing             pod/webapp-7b7c6f5945-hgjxv    Stopping container nginx
+6m15s       Normal    Created             pod/webapp-69f74bb797-jrtz4    Container created
+6m15s       Normal    Started             pod/webapp-69f74bb797-jrtz4    Container started
+6m15s       Normal    Pulled              pod/webapp-69f74bb797-jrtz4    Container image "nginx:1.27-alpine" already present on machine and can be accessed by the pod
+6m14s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-8vvxg
+6m14s       Normal    Killing             pod/webapp-7b7c6f5945-8vvxg    Stopping container nginx
+98s         Normal    SuccessfulCreate    replicaset/webapp-7989cf7bf9   Created pod: webapp-7989cf7bf9-9ghdr
+98s         Normal    Scheduled           pod/webapp-7989cf7bf9-9ghdr    Successfully assigned estudo-felipe/webapp-7989cf7bf9-9ghdr to k8s-worker2
+98s         Normal    ScalingReplicaSet   deployment/webapp              (combined from similar events): Scaled up replica set webapp-7989cf7bf9 from 0 to 1
+23s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Error: ImagePullBackOff
+23s         Normal    BackOff             pod/webapp-7989cf7bf9-9ghdr    Back-off pulling image "nginx:versao-que-nao-existe"
+8s          Normal    Pulling             pod/webapp-7989cf7bf9-9ghdr    Pulling image "nginx:versao-que-nao-existe"
+7s          Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Error: ErrImagePull
+7s          Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Failed to pull image "nginx:versao-que-nao-existe": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/library/nginx:versao-que-nao-existe": failed to resolve image: docker.io/library/nginx:versao-que-nao-existe: not found
+❯ k get events -n estudo-felipe
+LAST SEEN   TYPE      REASON              OBJECT                         MESSAGE
+55m         Normal    Scheduled           pod/meu-nginx                  Successfully assigned estudo-felipe/meu-nginx to k8s-worker2
+55m         Normal    Pulling             pod/meu-nginx                  Pulling image "nginx:1.27"
+55m         Normal    Pulled              pod/meu-nginx                  Successfully pulled image "nginx:1.27" in 12.977s (12.977s including waiting). Image size: 72406859 bytes.
+55m         Normal    Created             pod/meu-nginx                  Container created
+55m         Normal    Started             pod/meu-nginx                  Container started
+51m         Normal    Killing             pod/meu-nginx                  Stopping container meu-nginx
+7m2s        Normal    Scheduled           pod/webapp-69f74bb797-28dwq    Successfully assigned estudo-felipe/webapp-69f74bb797-28dwq to k8s-worker2
+7m1s        Normal    Pulling             pod/webapp-69f74bb797-28dwq    Pulling image "nginx:1.27-alpine"
+6m55s       Normal    Pulled              pod/webapp-69f74bb797-28dwq    Successfully pulled image "nginx:1.27-alpine" in 6.538s (6.539s including waiting). Image size: 20984244 bytes.
+6m55s       Normal    Created             pod/webapp-69f74bb797-28dwq    Container created
+6m54s       Normal    Started             pod/webapp-69f74bb797-28dwq    Container started
+7m9s        Normal    Scheduled           pod/webapp-69f74bb797-6mjg6    Successfully assigned estudo-felipe/webapp-69f74bb797-6mjg6 to k8s-worker1
+7m8s        Normal    Pulling             pod/webapp-69f74bb797-6mjg6    Pulling image "nginx:1.27-alpine"
+7m3s        Normal    Pulled              pod/webapp-69f74bb797-6mjg6    Successfully pulled image "nginx:1.27-alpine" in 5.433s (5.433s including waiting). Image size: 20984244 bytes.
+7m3s        Normal    Created             pod/webapp-69f74bb797-6mjg6    Container created
+7m3s        Normal    Started             pod/webapp-69f74bb797-6mjg6    Container started
+6m54s       Normal    Scheduled           pod/webapp-69f74bb797-jrtz4    Successfully assigned estudo-felipe/webapp-69f74bb797-jrtz4 to k8s-worker1
+6m53s       Normal    Pulled              pod/webapp-69f74bb797-jrtz4    Container image "nginx:1.27-alpine" already present on machine and can be accessed by the pod
+6m53s       Normal    Created             pod/webapp-69f74bb797-jrtz4    Container created
+6m53s       Normal    Started             pod/webapp-69f74bb797-jrtz4    Container started
+7m9s        Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-6mjg6
+7m2s        Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-28dwq
+6m54s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-jrtz4
+2m16s       Normal    Scheduled           pod/webapp-7989cf7bf9-9ghdr    Successfully assigned estudo-felipe/webapp-7989cf7bf9-9ghdr to k8s-worker2
+46s         Normal    Pulling             pod/webapp-7989cf7bf9-9ghdr    Pulling image "nginx:versao-que-nao-existe"
+45s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Failed to pull image "nginx:versao-que-nao-existe": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/library/nginx:versao-que-nao-existe": failed to resolve image: docker.io/library/nginx:versao-que-nao-existe: not found
+45s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Error: ErrImagePull
+7s          Normal    BackOff             pod/webapp-7989cf7bf9-9ghdr    Back-off pulling image "nginx:versao-que-nao-existe"
+7s          Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Error: ImagePullBackOff
+2m16s       Normal    SuccessfulCreate    replicaset/webapp-7989cf7bf9   Created pod: webapp-7989cf7bf9-9ghdr
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-8vvxg    Successfully assigned estudo-felipe/webapp-7b7c6f5945-8vvxg to k8s-worker2
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-8vvxg    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-8vvxg    Container created
+19m         Normal    Started             pod/webapp-7b7c6f5945-8vvxg    Container started
+6m52s       Normal    Killing             pod/webapp-7b7c6f5945-8vvxg    Stopping container nginx
+7m9s        Normal    Scheduled           pod/webapp-7b7c6f5945-98p7x    Successfully assigned estudo-felipe/webapp-7b7c6f5945-98p7x to k8s-worker1
+7m8s        Normal    Pulled              pod/webapp-7b7c6f5945-98p7x    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+7m8s        Normal    Created             pod/webapp-7b7c6f5945-98p7x    Container created
+7m8s        Normal    Started             pod/webapp-7b7c6f5945-98p7x    Container started
+7m2s        Normal    Killing             pod/webapp-7b7c6f5945-98p7x    Stopping container nginx
+41m         Normal    Scheduled           pod/webapp-7b7c6f5945-bm4vn    Successfully assigned estudo-felipe/webapp-7b7c6f5945-bm4vn to k8s-worker1
+41m         Normal    Pulling             pod/webapp-7b7c6f5945-bm4vn    Pulling image "nginx:1.27"
+41m         Normal    Pulled              pod/webapp-7b7c6f5945-bm4vn    Successfully pulled image "nginx:1.27" in 8.356s (8.356s including waiting). Image size: 72406859 bytes.
+41m         Normal    Created             pod/webapp-7b7c6f5945-bm4vn    Container created
+41m         Normal    Started             pod/webapp-7b7c6f5945-bm4vn    Container started
+23m         Normal    Killing             pod/webapp-7b7c6f5945-bm4vn    Stopping container nginx
+16m         Normal    Scheduled           pod/webapp-7b7c6f5945-f2sm7    Successfully assigned estudo-felipe/webapp-7b7c6f5945-f2sm7 to k8s-worker1
+16m         Normal    Pulled              pod/webapp-7b7c6f5945-f2sm7    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+16m         Normal    Created             pod/webapp-7b7c6f5945-f2sm7    Container created
+16m         Normal    Started             pod/webapp-7b7c6f5945-f2sm7    Container started
+16m         Normal    Killing             pod/webapp-7b7c6f5945-f2sm7    Stopping container nginx
+20m         Normal    Scheduled           pod/webapp-7b7c6f5945-fv8zc    Successfully assigned estudo-felipe/webapp-7b7c6f5945-fv8zc to k8s-worker1
+20m         Normal    Pulled              pod/webapp-7b7c6f5945-fv8zc    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+20m         Normal    Created             pod/webapp-7b7c6f5945-fv8zc    Container created
+20m         Normal    Started             pod/webapp-7b7c6f5945-fv8zc    Container started
+19m         Normal    Killing             pod/webapp-7b7c6f5945-fv8zc    Stopping container nginx
+17m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgjxv    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgjxv to k8s-worker2
+17m         Normal    Pulled              pod/webapp-7b7c6f5945-hgjxv    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+17m         Normal    Created             pod/webapp-7b7c6f5945-hgjxv    Container created
+17m         Normal    Started             pod/webapp-7b7c6f5945-hgjxv    Container started
+6m54s       Normal    Killing             pod/webapp-7b7c6f5945-hgjxv    Stopping container nginx
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgknq    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgknq to k8s-worker1
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-hgknq    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-hgknq    Container created
+19m         Normal    Started             pod/webapp-7b7c6f5945-hgknq    Container started
+17m         Normal    Killing             pod/webapp-7b7c6f5945-hgknq    Stopping container nginx
+41m         Normal    Scheduled           pod/webapp-7b7c6f5945-j7hc2    Successfully assigned estudo-felipe/webapp-7b7c6f5945-j7hc2 to k8s-worker2
+41m         Normal    Pulled              pod/webapp-7b7c6f5945-j7hc2    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+41m         Normal    Created             pod/webapp-7b7c6f5945-j7hc2    Container created
+41m         Normal    Started             pod/webapp-7b7c6f5945-j7hc2    Container started
+20m         Normal    Killing             pod/webapp-7b7c6f5945-j7hc2    Stopping container nginx
+23m         Normal    Scheduled           pod/webapp-7b7c6f5945-jk5vz    Successfully assigned estudo-felipe/webapp-7b7c6f5945-jk5vz to k8s-worker1
+23m         Normal    Pulled              pod/webapp-7b7c6f5945-jk5vz    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+23m         Normal    Created             pod/webapp-7b7c6f5945-jk5vz    Container created
+23m         Normal    Started             pod/webapp-7b7c6f5945-jk5vz    Container started
+16m         Normal    Killing             pod/webapp-7b7c6f5945-jk5vz    Stopping container nginx
+17m         Normal    Scheduled           pod/webapp-7b7c6f5945-p2764    Successfully assigned estudo-felipe/webapp-7b7c6f5945-p2764 to k8s-worker1
+17m         Normal    Pulled              pod/webapp-7b7c6f5945-p2764    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+17m         Normal    Created             pod/webapp-7b7c6f5945-p2764    Container created
+17m         Normal    Started             pod/webapp-7b7c6f5945-p2764    Container started
+17m         Normal    Killing             pod/webapp-7b7c6f5945-p2764    Stopping container nginx
+16m         Normal    Scheduled           pod/webapp-7b7c6f5945-t2zm8    Successfully assigned estudo-felipe/webapp-7b7c6f5945-t2zm8 to k8s-worker1
+16m         Normal    Pulled              pod/webapp-7b7c6f5945-t2zm8    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+16m         Normal    Created             pod/webapp-7b7c6f5945-t2zm8    Container created
+16m         Normal    Started             pod/webapp-7b7c6f5945-t2zm8    Container started
+16m         Normal    Killing             pod/webapp-7b7c6f5945-t2zm8    Stopping container nginx
+41m         Normal    Scheduled           pod/webapp-7b7c6f5945-tdngs    Successfully assigned estudo-felipe/webapp-7b7c6f5945-tdngs to k8s-worker2
+41m         Normal    Pulled              pod/webapp-7b7c6f5945-tdngs    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+41m         Normal    Created             pod/webapp-7b7c6f5945-tdngs    Container created
+41m         Normal    Started             pod/webapp-7b7c6f5945-tdngs    Container started
+19m         Normal    Killing             pod/webapp-7b7c6f5945-tdngs    Stopping container nginx
+41m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-bm4vn
+41m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-tdngs
+41m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-j7hc2
+23m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-jk5vz
+20m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-fv8zc
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-8vvxg
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgknq
+17m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgjxv
+17m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-p2764
+17m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgknq
+17m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-p2764
+16m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-t2zm8
+16m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-f2sm7
+16m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-f2sm7
+16m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-jk5vz
+16m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-t2zm8
+7m9s        Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-98p7x
+7m2s        Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-98p7x
+6m54s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgjxv
+6m52s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-8vvxg
+41m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 0 to 3
+16m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 3 to 5
+17m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 3
+16m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 2
+7m9s        Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 2 to 3
+7m9s        Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 0 to 1
+7m2s        Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 3 to 2
+7m2s        Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 1 to 2
+6m54s       Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 2 to 1
+6m54s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 2 to 3
+2m16s       Normal    ScalingReplicaSet   deployment/webapp              (combined from similar events): Scaled up replica set webapp-7989cf7bf9 from 0 to 1
+❯ k get events -n estudo-felipe --sort-by='.lastTimestamp'
+LAST SEEN   TYPE      REASON              OBJECT                         MESSAGE
+56m         Normal    Scheduled           pod/meu-nginx                  Successfully assigned estudo-felipe/meu-nginx to k8s-worker2
+56m         Normal    Pulling             pod/meu-nginx                  Pulling image "nginx:1.27"
+55m         Normal    Pulled              pod/meu-nginx                  Successfully pulled image "nginx:1.27" in 12.977s (12.977s including waiting). Image size: 72406859 bytes.
+55m         Normal    Created             pod/meu-nginx                  Container created
+55m         Normal    Started             pod/meu-nginx                  Container started
+52m         Normal    Killing             pod/meu-nginx                  Stopping container meu-nginx
+42m         Normal    Scheduled           pod/webapp-7b7c6f5945-bm4vn    Successfully assigned estudo-felipe/webapp-7b7c6f5945-bm4vn to k8s-worker1
+42m         Normal    Scheduled           pod/webapp-7b7c6f5945-j7hc2    Successfully assigned estudo-felipe/webapp-7b7c6f5945-j7hc2 to k8s-worker2
+42m         Normal    Scheduled           pod/webapp-7b7c6f5945-tdngs    Successfully assigned estudo-felipe/webapp-7b7c6f5945-tdngs to k8s-worker2
+42m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 0 to 3
+42m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-bm4vn
+42m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-j7hc2
+42m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-tdngs
+42m         Normal    Pulling             pod/webapp-7b7c6f5945-bm4vn    Pulling image "nginx:1.27"
+42m         Normal    Started             pod/webapp-7b7c6f5945-j7hc2    Container started
+42m         Normal    Started             pod/webapp-7b7c6f5945-tdngs    Container started
+42m         Normal    Created             pod/webapp-7b7c6f5945-tdngs    Container created
+42m         Normal    Pulled              pod/webapp-7b7c6f5945-tdngs    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+42m         Normal    Pulled              pod/webapp-7b7c6f5945-j7hc2    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+42m         Normal    Created             pod/webapp-7b7c6f5945-j7hc2    Container created
+42m         Normal    Pulled              pod/webapp-7b7c6f5945-bm4vn    Successfully pulled image "nginx:1.27" in 8.356s (8.356s including waiting). Image size: 72406859 bytes.
+42m         Normal    Created             pod/webapp-7b7c6f5945-bm4vn    Container created
+42m         Normal    Started             pod/webapp-7b7c6f5945-bm4vn    Container started
+23m         Normal    Scheduled           pod/webapp-7b7c6f5945-jk5vz    Successfully assigned estudo-felipe/webapp-7b7c6f5945-jk5vz to k8s-worker1
+23m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-jk5vz
+23m         Normal    Killing             pod/webapp-7b7c6f5945-bm4vn    Stopping container nginx
+23m         Normal    Pulled              pod/webapp-7b7c6f5945-jk5vz    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+23m         Normal    Created             pod/webapp-7b7c6f5945-jk5vz    Container created
+23m         Normal    Started             pod/webapp-7b7c6f5945-jk5vz    Container started
+20m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-fv8zc
+20m         Normal    Scheduled           pod/webapp-7b7c6f5945-fv8zc    Successfully assigned estudo-felipe/webapp-7b7c6f5945-fv8zc to k8s-worker1
+20m         Normal    Pulled              pod/webapp-7b7c6f5945-fv8zc    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+20m         Normal    Created             pod/webapp-7b7c6f5945-fv8zc    Container created
+20m         Normal    Killing             pod/webapp-7b7c6f5945-j7hc2    Stopping container nginx
+20m         Normal    Started             pod/webapp-7b7c6f5945-fv8zc    Container started
+19m         Normal    Killing             pod/webapp-7b7c6f5945-fv8zc    Stopping container nginx
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgknq    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgknq to k8s-worker1
+19m         Normal    Killing             pod/webapp-7b7c6f5945-tdngs    Stopping container nginx
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-8vvxg    Successfully assigned estudo-felipe/webapp-7b7c6f5945-8vvxg to k8s-worker2
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-8vvxg
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgknq
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-hgknq    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-hgknq    Container created
+19m         Normal    Started             pod/webapp-7b7c6f5945-hgknq    Container started
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-8vvxg    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Started             pod/webapp-7b7c6f5945-8vvxg    Container started
+19m         Normal    Created             pod/webapp-7b7c6f5945-8vvxg    Container created
+17m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-p2764
+17m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgjxv    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgjxv to k8s-worker2
+17m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgjxv
+17m         Normal    Scheduled           pod/webapp-7b7c6f5945-p2764    Successfully assigned estudo-felipe/webapp-7b7c6f5945-p2764 to k8s-worker1
+17m         Normal    Created             pod/webapp-7b7c6f5945-p2764    Container created
+17m         Normal    Started             pod/webapp-7b7c6f5945-p2764    Container started
+17m         Normal    Pulled              pod/webapp-7b7c6f5945-hgjxv    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+17m         Normal    Created             pod/webapp-7b7c6f5945-hgjxv    Container created
+17m         Normal    Started             pod/webapp-7b7c6f5945-hgjxv    Container started
+17m         Normal    Pulled              pod/webapp-7b7c6f5945-p2764    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+17m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgknq
+17m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-p2764
+17m         Normal    Killing             pod/webapp-7b7c6f5945-hgknq    Stopping container nginx
+17m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 3
+17m         Normal    Killing             pod/webapp-7b7c6f5945-p2764    Stopping container nginx
+17m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-t2zm8
+17m         Normal    Scheduled           pod/webapp-7b7c6f5945-t2zm8    Successfully assigned estudo-felipe/webapp-7b7c6f5945-t2zm8 to k8s-worker1
+17m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-f2sm7
+17m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 3 to 5
+17m         Normal    Scheduled           pod/webapp-7b7c6f5945-f2sm7    Successfully assigned estudo-felipe/webapp-7b7c6f5945-f2sm7 to k8s-worker1
+16m         Normal    Created             pod/webapp-7b7c6f5945-t2zm8    Container created
+16m         Normal    Pulled              pod/webapp-7b7c6f5945-f2sm7    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+16m         Normal    Started             pod/webapp-7b7c6f5945-f2sm7    Container started
+16m         Normal    Started             pod/webapp-7b7c6f5945-t2zm8    Container started
+16m         Normal    Pulled              pod/webapp-7b7c6f5945-t2zm8    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+16m         Normal    Created             pod/webapp-7b7c6f5945-f2sm7    Container created
+16m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 2
+16m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-t2zm8
+16m         Normal    Killing             pod/webapp-7b7c6f5945-jk5vz    Stopping container nginx
+16m         Normal    Killing             pod/webapp-7b7c6f5945-f2sm7    Stopping container nginx
+16m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-f2sm7
+16m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-jk5vz
+16m         Normal    Killing             pod/webapp-7b7c6f5945-t2zm8    Stopping container nginx
+7m29s       Normal    Scheduled           pod/webapp-7b7c6f5945-98p7x    Successfully assigned estudo-felipe/webapp-7b7c6f5945-98p7x to k8s-worker1
+7m29s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-6mjg6
+7m29s       Normal    Scheduled           pod/webapp-69f74bb797-6mjg6    Successfully assigned estudo-felipe/webapp-69f74bb797-6mjg6 to k8s-worker1
+7m29s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 2 to 3
+7m29s       Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-98p7x
+7m29s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 0 to 1
+7m28s       Normal    Pulling             pod/webapp-69f74bb797-6mjg6    Pulling image "nginx:1.27-alpine"
+7m28s       Normal    Started             pod/webapp-7b7c6f5945-98p7x    Container started
+7m28s       Normal    Pulled              pod/webapp-7b7c6f5945-98p7x    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+7m28s       Normal    Created             pod/webapp-7b7c6f5945-98p7x    Container created
+7m23s       Normal    Created             pod/webapp-69f74bb797-6mjg6    Container created
+❯ k get events -n estudo-felipe --sort-by='.lastTimestamp'
+LAST SEEN   TYPE      REASON              OBJECT                         MESSAGE
+56m         Normal    Scheduled           pod/meu-nginx                  Successfully assigned estudo-felipe/meu-nginx to k8s-worker2
+56m         Normal    Pulling             pod/meu-nginx                  Pulling image "nginx:1.27"
+55m         Normal    Pulled              pod/meu-nginx                  Successfully pulled image "nginx:1.27" in 12.977s (12.977s including waiting). Image size: 72406859 bytes.
+55m         Normal    Created             pod/meu-nginx                  Container created
+55m         Normal    Started             pod/meu-nginx                  Container started
+52m         Normal    Killing             pod/meu-nginx                  Stopping container meu-nginx
+42m         Normal    Scheduled           pod/webapp-7b7c6f5945-bm4vn    Successfully assigned estudo-felipe/webapp-7b7c6f5945-bm4vn to k8s-worker1
+42m         Normal    Scheduled           pod/webapp-7b7c6f5945-j7hc2    Successfully assigned estudo-felipe/webapp-7b7c6f5945-j7hc2 to k8s-worker2
+42m         Normal    Scheduled           pod/webapp-7b7c6f5945-tdngs    Successfully assigned estudo-felipe/webapp-7b7c6f5945-tdngs to k8s-worker2
+42m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 0 to 3
+42m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-bm4vn
+42m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-j7hc2
+42m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-tdngs
+42m         Normal    Pulling             pod/webapp-7b7c6f5945-bm4vn    Pulling image "nginx:1.27"
+42m         Normal    Started             pod/webapp-7b7c6f5945-j7hc2    Container started
+42m         Normal    Started             pod/webapp-7b7c6f5945-tdngs    Container started
+42m         Normal    Created             pod/webapp-7b7c6f5945-tdngs    Container created
+42m         Normal    Pulled              pod/webapp-7b7c6f5945-tdngs    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+42m         Normal    Pulled              pod/webapp-7b7c6f5945-j7hc2    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+42m         Normal    Created             pod/webapp-7b7c6f5945-j7hc2    Container created
+42m         Normal    Pulled              pod/webapp-7b7c6f5945-bm4vn    Successfully pulled image "nginx:1.27" in 8.356s (8.356s including waiting). Image size: 72406859 bytes.
+42m         Normal    Created             pod/webapp-7b7c6f5945-bm4vn    Container created
+42m         Normal    Started             pod/webapp-7b7c6f5945-bm4vn    Container started
+23m         Normal    Scheduled           pod/webapp-7b7c6f5945-jk5vz    Successfully assigned estudo-felipe/webapp-7b7c6f5945-jk5vz to k8s-worker1
+23m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-jk5vz
+23m         Normal    Killing             pod/webapp-7b7c6f5945-bm4vn    Stopping container nginx
+23m         Normal    Pulled              pod/webapp-7b7c6f5945-jk5vz    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+23m         Normal    Created             pod/webapp-7b7c6f5945-jk5vz    Container created
+23m         Normal    Started             pod/webapp-7b7c6f5945-jk5vz    Container started
+20m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-fv8zc
+20m         Normal    Scheduled           pod/webapp-7b7c6f5945-fv8zc    Successfully assigned estudo-felipe/webapp-7b7c6f5945-fv8zc to k8s-worker1
+20m         Normal    Pulled              pod/webapp-7b7c6f5945-fv8zc    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+20m         Normal    Created             pod/webapp-7b7c6f5945-fv8zc    Container created
+20m         Normal    Killing             pod/webapp-7b7c6f5945-j7hc2    Stopping container nginx
+20m         Normal    Started             pod/webapp-7b7c6f5945-fv8zc    Container started
+19m         Normal    Killing             pod/webapp-7b7c6f5945-fv8zc    Stopping container nginx
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgknq    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgknq to k8s-worker1
+19m         Normal    Killing             pod/webapp-7b7c6f5945-tdngs    Stopping container nginx
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-8vvxg    Successfully assigned estudo-felipe/webapp-7b7c6f5945-8vvxg to k8s-worker2
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-8vvxg
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgknq
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-hgknq    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-hgknq    Container created
+19m         Normal    Started             pod/webapp-7b7c6f5945-hgknq    Container started
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-8vvxg    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Started             pod/webapp-7b7c6f5945-8vvxg    Container started
+19m         Normal    Created             pod/webapp-7b7c6f5945-8vvxg    Container created
+17m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-p2764
+17m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgjxv    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgjxv to k8s-worker2
+17m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgjxv
+17m         Normal    Scheduled           pod/webapp-7b7c6f5945-p2764    Successfully assigned estudo-felipe/webapp-7b7c6f5945-p2764 to k8s-worker1
+17m         Normal    Created             pod/webapp-7b7c6f5945-p2764    Container created
+17m         Normal    Started             pod/webapp-7b7c6f5945-p2764    Container started
+17m         Normal    Pulled              pod/webapp-7b7c6f5945-hgjxv    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+17m         Normal    Created             pod/webapp-7b7c6f5945-hgjxv    Container created
+17m         Normal    Started             pod/webapp-7b7c6f5945-hgjxv    Container started
+17m         Normal    Pulled              pod/webapp-7b7c6f5945-p2764    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+17m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgknq
+17m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-p2764
+17m         Normal    Killing             pod/webapp-7b7c6f5945-hgknq    Stopping container nginx
+17m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 3
+17m         Normal    Killing             pod/webapp-7b7c6f5945-p2764    Stopping container nginx
+17m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-t2zm8
+17m         Normal    Scheduled           pod/webapp-7b7c6f5945-t2zm8    Successfully assigned estudo-felipe/webapp-7b7c6f5945-t2zm8 to k8s-worker1
+17m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-f2sm7
+17m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 3 to 5
+17m         Normal    Scheduled           pod/webapp-7b7c6f5945-f2sm7    Successfully assigned estudo-felipe/webapp-7b7c6f5945-f2sm7 to k8s-worker1
+17m         Normal    Created             pod/webapp-7b7c6f5945-t2zm8    Container created
+17m         Normal    Pulled              pod/webapp-7b7c6f5945-f2sm7    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+17m         Normal    Started             pod/webapp-7b7c6f5945-f2sm7    Container started
+17m         Normal    Started             pod/webapp-7b7c6f5945-t2zm8    Container started
+17m         Normal    Pulled              pod/webapp-7b7c6f5945-t2zm8    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+17m         Normal    Created             pod/webapp-7b7c6f5945-f2sm7    Container created
+16m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 2
+16m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-t2zm8
+16m         Normal    Killing             pod/webapp-7b7c6f5945-jk5vz    Stopping container nginx
+16m         Normal    Killing             pod/webapp-7b7c6f5945-f2sm7    Stopping container nginx
+16m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-f2sm7
+16m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-jk5vz
+16m         Normal    Killing             pod/webapp-7b7c6f5945-t2zm8    Stopping container nginx
+7m31s       Normal    Scheduled           pod/webapp-7b7c6f5945-98p7x    Successfully assigned estudo-felipe/webapp-7b7c6f5945-98p7x to k8s-worker1
+7m31s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-6mjg6
+7m31s       Normal    Scheduled           pod/webapp-69f74bb797-6mjg6    Successfully assigned estudo-felipe/webapp-69f74bb797-6mjg6 to k8s-worker1
+7m31s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 2 to 3
+7m31s       Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-98p7x
+7m31s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 0 to 1
+7m30s       Normal    Pulling             pod/webapp-69f74bb797-6mjg6    Pulling image "nginx:1.27-alpine"
+7m30s       Normal    Started             pod/webapp-7b7c6f5945-98p7x    Container started
+7m30s       Normal    Pulled              pod/webapp-7b7c6f5945-98p7x    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+7m30s       Normal    Created             pod/webapp-7b7c6f5945-98p7x    Container created
+7m25s       Normal    Created             pod/webapp-69f74bb797-6mjg6    Container created
+7m25s       Normal    Pulled              pod/webapp-69f74bb797-6mjg6    Successfully pulled image "nginx:1.27-alpine" in 5.433s (5.433s including waiting). Image size: 20984244 bytes.
+7m25s       Normal    Started             pod/webapp-69f74bb797-6mjg6    Container started
+7m24s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-98p7x
+7m24s       Normal    Scheduled           pod/webapp-69f74bb797-28dwq    Successfully assigned estudo-felipe/webapp-69f74bb797-28dwq to k8s-worker2
+7m24s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 1 to 2
+7m24s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-28dwq
+7m24s       Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 3 to 2
+7m24s       Normal    Killing             pod/webapp-7b7c6f5945-98p7x    Stopping container nginx
+7m23s       Normal    Pulling             pod/webapp-69f74bb797-28dwq    Pulling image "nginx:1.27-alpine"
+7m17s       Normal    Created             pod/webapp-69f74bb797-28dwq    Container created
+7m17s       Normal    Pulled              pod/webapp-69f74bb797-28dwq    Successfully pulled image "nginx:1.27-alpine" in 6.538s (6.539s including waiting). Image size: 20984244 bytes.
+7m16s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgjxv
+7m16s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 2 to 3
+7m16s       Normal    Started             pod/webapp-69f74bb797-28dwq    Container started
+7m16s       Normal    Scheduled           pod/webapp-69f74bb797-jrtz4    Successfully assigned estudo-felipe/webapp-69f74bb797-jrtz4 to k8s-worker1
+7m16s       Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 2 to 1
+7m16s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-jrtz4
+7m16s       Normal    Killing             pod/webapp-7b7c6f5945-hgjxv    Stopping container nginx
+7m15s       Normal    Created             pod/webapp-69f74bb797-jrtz4    Container created
+7m15s       Normal    Started             pod/webapp-69f74bb797-jrtz4    Container started
+7m15s       Normal    Pulled              pod/webapp-69f74bb797-jrtz4    Container image "nginx:1.27-alpine" already present on machine and can be accessed by the pod
+7m14s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-8vvxg
+7m14s       Normal    Killing             pod/webapp-7b7c6f5945-8vvxg    Stopping container nginx
+2m38s       Normal    SuccessfulCreate    replicaset/webapp-7989cf7bf9   Created pod: webapp-7989cf7bf9-9ghdr
+2m38s       Normal    Scheduled           pod/webapp-7989cf7bf9-9ghdr    Successfully assigned estudo-felipe/webapp-7989cf7bf9-9ghdr to k8s-worker2
+2m38s       Normal    ScalingReplicaSet   deployment/webapp              (combined from similar events): Scaled up replica set webapp-7989cf7bf9 from 0 to 1
+68s         Normal    Pulling             pod/webapp-7989cf7bf9-9ghdr    Pulling image "nginx:versao-que-nao-existe"
+67s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Error: ErrImagePull
+67s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Failed to pull image "nginx:versao-que-nao-existe": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/library/nginx:versao-que-nao-existe": failed to resolve image: docker.io/library/nginx:versao-que-nao-existe: not found
+4s          Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Error: ImagePullBackOff
+4s          Normal    BackOff             pod/webapp-7989cf7bf9-9ghdr    Back-off pulling image "nginx:versao-que-nao-existe"
+❯ k get events -n estudo-felipe --sort-by='.lastTimestamp'
+LAST SEEN   TYPE      REASON              OBJECT                         MESSAGE
+57m         Normal    Scheduled           pod/meu-nginx                  Successfully assigned estudo-felipe/meu-nginx to k8s-worker2
+57m         Normal    Pulling             pod/meu-nginx                  Pulling image "nginx:1.27"
+57m         Normal    Pulled              pod/meu-nginx                  Successfully pulled image "nginx:1.27" in 12.977s (12.977s including waiting). Image size: 72406859 bytes.
+57m         Normal    Created             pod/meu-nginx                  Container created
+57m         Normal    Started             pod/meu-nginx                  Container started
+53m         Normal    Killing             pod/meu-nginx                  Stopping container meu-nginx
+43m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 0 to 3
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-j7hc2    Successfully assigned estudo-felipe/webapp-7b7c6f5945-j7hc2 to k8s-worker2
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-tdngs
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-tdngs    Successfully assigned estudo-felipe/webapp-7b7c6f5945-tdngs to k8s-worker2
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-bm4vn    Successfully assigned estudo-felipe/webapp-7b7c6f5945-bm4vn to k8s-worker1
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-bm4vn
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-j7hc2
+43m         Normal    Pulling             pod/webapp-7b7c6f5945-bm4vn    Pulling image "nginx:1.27"
+43m         Normal    Created             pod/webapp-7b7c6f5945-tdngs    Container created
+43m         Normal    Started             pod/webapp-7b7c6f5945-tdngs    Container started
+43m         Normal    Started             pod/webapp-7b7c6f5945-j7hc2    Container started
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-tdngs    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-j7hc2    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+43m         Normal    Created             pod/webapp-7b7c6f5945-j7hc2    Container created
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-bm4vn    Successfully pulled image "nginx:1.27" in 8.356s (8.356s including waiting). Image size: 72406859 bytes.
+43m         Normal    Created             pod/webapp-7b7c6f5945-bm4vn    Container created
+43m         Normal    Started             pod/webapp-7b7c6f5945-bm4vn    Container started
+25m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-jk5vz
+25m         Normal    Killing             pod/webapp-7b7c6f5945-bm4vn    Stopping container nginx
+25m         Normal    Scheduled           pod/webapp-7b7c6f5945-jk5vz    Successfully assigned estudo-felipe/webapp-7b7c6f5945-jk5vz to k8s-worker1
+25m         Normal    Created             pod/webapp-7b7c6f5945-jk5vz    Container created
+25m         Normal    Started             pod/webapp-7b7c6f5945-jk5vz    Container started
+25m         Normal    Pulled              pod/webapp-7b7c6f5945-jk5vz    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+22m         Normal    Created             pod/webapp-7b7c6f5945-fv8zc    Container created
+22m         Normal    Scheduled           pod/webapp-7b7c6f5945-fv8zc    Successfully assigned estudo-felipe/webapp-7b7c6f5945-fv8zc to k8s-worker1
+22m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-fv8zc
+22m         Normal    Killing             pod/webapp-7b7c6f5945-j7hc2    Stopping container nginx
+22m         Normal    Pulled              pod/webapp-7b7c6f5945-fv8zc    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+22m         Normal    Started             pod/webapp-7b7c6f5945-fv8zc    Container started
+20m         Normal    Scheduled           pod/webapp-7b7c6f5945-8vvxg    Successfully assigned estudo-felipe/webapp-7b7c6f5945-8vvxg to k8s-worker2
+20m         Normal    Killing             pod/webapp-7b7c6f5945-tdngs    Stopping container nginx
+20m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgknq
+20m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-8vvxg
+20m         Normal    Killing             pod/webapp-7b7c6f5945-fv8zc    Stopping container nginx
+20m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgknq    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgknq to k8s-worker1
+20m         Normal    Pulled              pod/webapp-7b7c6f5945-hgknq    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+20m         Normal    Created             pod/webapp-7b7c6f5945-hgknq    Container created
+20m         Normal    Started             pod/webapp-7b7c6f5945-hgknq    Container started
+20m         Normal    Started             pod/webapp-7b7c6f5945-8vvxg    Container started
+20m         Normal    Created             pod/webapp-7b7c6f5945-8vvxg    Container created
+20m         Normal    Pulled              pod/webapp-7b7c6f5945-8vvxg    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-p2764    Successfully assigned estudo-felipe/webapp-7b7c6f5945-p2764 to k8s-worker1
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-p2764
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgjxv
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgjxv    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgjxv to k8s-worker2
+19m         Normal    Started             pod/webapp-7b7c6f5945-hgjxv    Container started
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-p2764    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-p2764    Container created
+19m         Normal    Started             pod/webapp-7b7c6f5945-p2764    Container started
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-hgjxv    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-hgjxv    Container created
+18m         Normal    Killing             pod/webapp-7b7c6f5945-p2764    Stopping container nginx
+18m         Normal    Killing             pod/webapp-7b7c6f5945-hgknq    Stopping container nginx
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 3
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgknq
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-p2764
+18m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-t2zm8
+18m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-f2sm7
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 3 to 5
+18m         Normal    Scheduled           pod/webapp-7b7c6f5945-f2sm7    Successfully assigned estudo-felipe/webapp-7b7c6f5945-f2sm7 to k8s-worker1
+18m         Normal    Scheduled           pod/webapp-7b7c6f5945-t2zm8    Successfully assigned estudo-felipe/webapp-7b7c6f5945-t2zm8 to k8s-worker1
+18m         Normal    Started             pod/webapp-7b7c6f5945-t2zm8    Container started
+18m         Normal    Created             pod/webapp-7b7c6f5945-t2zm8    Container created
+18m         Normal    Pulled              pod/webapp-7b7c6f5945-t2zm8    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+18m         Normal    Pulled              pod/webapp-7b7c6f5945-f2sm7    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+18m         Normal    Created             pod/webapp-7b7c6f5945-f2sm7    Container created
+18m         Normal    Started             pod/webapp-7b7c6f5945-f2sm7    Container started
+18m         Normal    Killing             pod/webapp-7b7c6f5945-t2zm8    Stopping container nginx
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 2
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-f2sm7
+18m         Normal    Killing             pod/webapp-7b7c6f5945-jk5vz    Stopping container nginx
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-jk5vz
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-t2zm8
+18m         Normal    Killing             pod/webapp-7b7c6f5945-f2sm7    Stopping container nginx
+8m44s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 2 to 3
+8m44s       Normal    Scheduled           pod/webapp-7b7c6f5945-98p7x    Successfully assigned estudo-felipe/webapp-7b7c6f5945-98p7x to k8s-worker1
+8m44s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 0 to 1
+8m44s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-6mjg6
+8m44s       Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-98p7x
+8m44s       Normal    Scheduled           pod/webapp-69f74bb797-6mjg6    Successfully assigned estudo-felipe/webapp-69f74bb797-6mjg6 to k8s-worker1
+8m43s       Normal    Started             pod/webapp-7b7c6f5945-98p7x    Container started
+8m43s       Normal    Pulled              pod/webapp-7b7c6f5945-98p7x    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+8m43s       Normal    Created             pod/webapp-7b7c6f5945-98p7x    Container created
+8m43s       Normal    Pulling             pod/webapp-69f74bb797-6mjg6    Pulling image "nginx:1.27-alpine"
+8m38s       Normal    Created             pod/webapp-69f74bb797-6mjg6    Container created
+8m38s       Normal    Pulled              pod/webapp-69f74bb797-6mjg6    Successfully pulled image "nginx:1.27-alpine" in 5.433s (5.433s including waiting). Image size: 20984244 bytes.
+8m38s       Normal    Started             pod/webapp-69f74bb797-6mjg6    Container started
+8m37s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-98p7x
+8m37s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 1 to 2
+8m37s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-28dwq
+8m37s       Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 3 to 2
+8m37s       Normal    Scheduled           pod/webapp-69f74bb797-28dwq    Successfully assigned estudo-felipe/webapp-69f74bb797-28dwq to k8s-worker2
+8m37s       Normal    Killing             pod/webapp-7b7c6f5945-98p7x    Stopping container nginx
+8m36s       Normal    Pulling             pod/webapp-69f74bb797-28dwq    Pulling image "nginx:1.27-alpine"
+8m30s       Normal    Created             pod/webapp-69f74bb797-28dwq    Container created
+8m30s       Normal    Pulled              pod/webapp-69f74bb797-28dwq    Successfully pulled image "nginx:1.27-alpine" in 6.538s (6.539s including waiting). Image size: 20984244 bytes.
+8m29s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-jrtz4
+8m29s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 2 to 3
+8m29s       Normal    Started             pod/webapp-69f74bb797-28dwq    Container started
+8m29s       Normal    Killing             pod/webapp-7b7c6f5945-hgjxv    Stopping container nginx
+8m29s       Normal    Scheduled           pod/webapp-69f74bb797-jrtz4    Successfully assigned estudo-felipe/webapp-69f74bb797-jrtz4 to k8s-worker1
+8m29s       Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 2 to 1
+8m29s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgjxv
+8m28s       Normal    Pulled              pod/webapp-69f74bb797-jrtz4    Container image "nginx:1.27-alpine" already present on machine and can be accessed by the pod
+8m28s       Normal    Created             pod/webapp-69f74bb797-jrtz4    Container created
+8m28s       Normal    Started             pod/webapp-69f74bb797-jrtz4    Container started
+8m27s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-8vvxg
+8m27s       Normal    Killing             pod/webapp-7b7c6f5945-8vvxg    Stopping container nginx
+3m51s       Normal    SuccessfulCreate    replicaset/webapp-7989cf7bf9   Created pod: webapp-7989cf7bf9-9ghdr
+3m51s       Normal    Scheduled           pod/webapp-7989cf7bf9-9ghdr    Successfully assigned estudo-felipe/webapp-7989cf7bf9-9ghdr to k8s-worker2
+50s         Normal    Pulling             pod/webapp-7989cf7bf9-9ghdr    Pulling image "nginx:versao-que-nao-existe"
+49s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Error: ErrImagePull
+49s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Failed to pull image "nginx:versao-que-nao-existe": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/library/nginx:versao-que-nao-existe": failed to resolve image: docker.io/library/nginx:versao-que-nao-existe: not found
+15s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Error: ImagePullBackOff
+15s         Normal    BackOff             pod/webapp-7989cf7bf9-9ghdr    Back-off pulling image "nginx:versao-que-nao-existe"
+6s          Normal    SuccessfulDelete    replicaset/webapp-7989cf7bf9   Deleted pod: webapp-7989cf7bf9-9ghdr
+6s          Normal    ScalingReplicaSet   deployment/webapp              (combined from similar events): Scaled down replica set webapp-7989cf7bf9 from 1 to 0
+❯ k get events -n estudo-felipe --sort-by='.lastTimestamp'
+LAST SEEN   TYPE      REASON              OBJECT                         MESSAGE
+57m         Normal    Scheduled           pod/meu-nginx                  Successfully assigned estudo-felipe/meu-nginx to k8s-worker2
+57m         Normal    Pulling             pod/meu-nginx                  Pulling image "nginx:1.27"
+57m         Normal    Pulled              pod/meu-nginx                  Successfully pulled image "nginx:1.27" in 12.977s (12.977s including waiting). Image size: 72406859 bytes.
+57m         Normal    Created             pod/meu-nginx                  Container created
+57m         Normal    Started             pod/meu-nginx                  Container started
+53m         Normal    Killing             pod/meu-nginx                  Stopping container meu-nginx
+43m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 0 to 3
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-j7hc2    Successfully assigned estudo-felipe/webapp-7b7c6f5945-j7hc2 to k8s-worker2
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-tdngs
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-tdngs    Successfully assigned estudo-felipe/webapp-7b7c6f5945-tdngs to k8s-worker2
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-bm4vn    Successfully assigned estudo-felipe/webapp-7b7c6f5945-bm4vn to k8s-worker1
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-bm4vn
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-j7hc2
+43m         Normal    Pulling             pod/webapp-7b7c6f5945-bm4vn    Pulling image "nginx:1.27"
+43m         Normal    Created             pod/webapp-7b7c6f5945-tdngs    Container created
+43m         Normal    Started             pod/webapp-7b7c6f5945-tdngs    Container started
+43m         Normal    Started             pod/webapp-7b7c6f5945-j7hc2    Container started
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-tdngs    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-j7hc2    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+43m         Normal    Created             pod/webapp-7b7c6f5945-j7hc2    Container created
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-bm4vn    Successfully pulled image "nginx:1.27" in 8.356s (8.356s including waiting). Image size: 72406859 bytes.
+43m         Normal    Created             pod/webapp-7b7c6f5945-bm4vn    Container created
+43m         Normal    Started             pod/webapp-7b7c6f5945-bm4vn    Container started
+25m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-jk5vz
+25m         Normal    Killing             pod/webapp-7b7c6f5945-bm4vn    Stopping container nginx
+25m         Normal    Scheduled           pod/webapp-7b7c6f5945-jk5vz    Successfully assigned estudo-felipe/webapp-7b7c6f5945-jk5vz to k8s-worker1
+25m         Normal    Created             pod/webapp-7b7c6f5945-jk5vz    Container created
+25m         Normal    Started             pod/webapp-7b7c6f5945-jk5vz    Container started
+25m         Normal    Pulled              pod/webapp-7b7c6f5945-jk5vz    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+22m         Normal    Created             pod/webapp-7b7c6f5945-fv8zc    Container created
+22m         Normal    Scheduled           pod/webapp-7b7c6f5945-fv8zc    Successfully assigned estudo-felipe/webapp-7b7c6f5945-fv8zc to k8s-worker1
+22m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-fv8zc
+22m         Normal    Killing             pod/webapp-7b7c6f5945-j7hc2    Stopping container nginx
+22m         Normal    Pulled              pod/webapp-7b7c6f5945-fv8zc    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+22m         Normal    Started             pod/webapp-7b7c6f5945-fv8zc    Container started
+20m         Normal    Scheduled           pod/webapp-7b7c6f5945-8vvxg    Successfully assigned estudo-felipe/webapp-7b7c6f5945-8vvxg to k8s-worker2
+20m         Normal    Killing             pod/webapp-7b7c6f5945-tdngs    Stopping container nginx
+20m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgknq
+20m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-8vvxg
+20m         Normal    Killing             pod/webapp-7b7c6f5945-fv8zc    Stopping container nginx
+20m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgknq    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgknq to k8s-worker1
+20m         Normal    Pulled              pod/webapp-7b7c6f5945-hgknq    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+20m         Normal    Created             pod/webapp-7b7c6f5945-hgknq    Container created
+20m         Normal    Started             pod/webapp-7b7c6f5945-hgknq    Container started
+20m         Normal    Started             pod/webapp-7b7c6f5945-8vvxg    Container started
+20m         Normal    Created             pod/webapp-7b7c6f5945-8vvxg    Container created
+20m         Normal    Pulled              pod/webapp-7b7c6f5945-8vvxg    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-p2764    Successfully assigned estudo-felipe/webapp-7b7c6f5945-p2764 to k8s-worker1
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-p2764
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgjxv
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgjxv    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgjxv to k8s-worker2
+19m         Normal    Started             pod/webapp-7b7c6f5945-hgjxv    Container started
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-p2764    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-p2764    Container created
+19m         Normal    Started             pod/webapp-7b7c6f5945-p2764    Container started
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-hgjxv    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-hgjxv    Container created
+18m         Normal    Killing             pod/webapp-7b7c6f5945-p2764    Stopping container nginx
+18m         Normal    Killing             pod/webapp-7b7c6f5945-hgknq    Stopping container nginx
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 3
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgknq
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-p2764
+18m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-t2zm8
+18m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-f2sm7
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 3 to 5
+18m         Normal    Scheduled           pod/webapp-7b7c6f5945-f2sm7    Successfully assigned estudo-felipe/webapp-7b7c6f5945-f2sm7 to k8s-worker1
+18m         Normal    Scheduled           pod/webapp-7b7c6f5945-t2zm8    Successfully assigned estudo-felipe/webapp-7b7c6f5945-t2zm8 to k8s-worker1
+18m         Normal    Started             pod/webapp-7b7c6f5945-t2zm8    Container started
+18m         Normal    Created             pod/webapp-7b7c6f5945-t2zm8    Container created
+18m         Normal    Pulled              pod/webapp-7b7c6f5945-t2zm8    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+18m         Normal    Pulled              pod/webapp-7b7c6f5945-f2sm7    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+18m         Normal    Created             pod/webapp-7b7c6f5945-f2sm7    Container created
+18m         Normal    Started             pod/webapp-7b7c6f5945-f2sm7    Container started
+18m         Normal    Killing             pod/webapp-7b7c6f5945-t2zm8    Stopping container nginx
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 2
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-f2sm7
+18m         Normal    Killing             pod/webapp-7b7c6f5945-jk5vz    Stopping container nginx
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-jk5vz
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-t2zm8
+18m         Normal    Killing             pod/webapp-7b7c6f5945-f2sm7    Stopping container nginx
+8m45s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 2 to 3
+8m45s       Normal    Scheduled           pod/webapp-7b7c6f5945-98p7x    Successfully assigned estudo-felipe/webapp-7b7c6f5945-98p7x to k8s-worker1
+8m45s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 0 to 1
+8m45s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-6mjg6
+8m45s       Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-98p7x
+8m45s       Normal    Scheduled           pod/webapp-69f74bb797-6mjg6    Successfully assigned estudo-felipe/webapp-69f74bb797-6mjg6 to k8s-worker1
+8m44s       Normal    Started             pod/webapp-7b7c6f5945-98p7x    Container started
+8m44s       Normal    Pulled              pod/webapp-7b7c6f5945-98p7x    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+8m44s       Normal    Created             pod/webapp-7b7c6f5945-98p7x    Container created
+8m44s       Normal    Pulling             pod/webapp-69f74bb797-6mjg6    Pulling image "nginx:1.27-alpine"
+8m39s       Normal    Created             pod/webapp-69f74bb797-6mjg6    Container created
+8m39s       Normal    Pulled              pod/webapp-69f74bb797-6mjg6    Successfully pulled image "nginx:1.27-alpine" in 5.433s (5.433s including waiting). Image size: 20984244 bytes.
+8m39s       Normal    Started             pod/webapp-69f74bb797-6mjg6    Container started
+8m38s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-98p7x
+8m38s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 1 to 2
+8m38s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-28dwq
+8m38s       Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 3 to 2
+8m38s       Normal    Scheduled           pod/webapp-69f74bb797-28dwq    Successfully assigned estudo-felipe/webapp-69f74bb797-28dwq to k8s-worker2
+8m38s       Normal    Killing             pod/webapp-7b7c6f5945-98p7x    Stopping container nginx
+8m37s       Normal    Pulling             pod/webapp-69f74bb797-28dwq    Pulling image "nginx:1.27-alpine"
+8m31s       Normal    Created             pod/webapp-69f74bb797-28dwq    Container created
+8m31s       Normal    Pulled              pod/webapp-69f74bb797-28dwq    Successfully pulled image "nginx:1.27-alpine" in 6.538s (6.539s including waiting). Image size: 20984244 bytes.
+8m30s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-jrtz4
+8m30s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 2 to 3
+8m30s       Normal    Started             pod/webapp-69f74bb797-28dwq    Container started
+8m30s       Normal    Killing             pod/webapp-7b7c6f5945-hgjxv    Stopping container nginx
+8m30s       Normal    Scheduled           pod/webapp-69f74bb797-jrtz4    Successfully assigned estudo-felipe/webapp-69f74bb797-jrtz4 to k8s-worker1
+8m30s       Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 2 to 1
+8m30s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgjxv
+8m29s       Normal    Pulled              pod/webapp-69f74bb797-jrtz4    Container image "nginx:1.27-alpine" already present on machine and can be accessed by the pod
+8m29s       Normal    Created             pod/webapp-69f74bb797-jrtz4    Container created
+8m29s       Normal    Started             pod/webapp-69f74bb797-jrtz4    Container started
+8m28s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-8vvxg
+8m28s       Normal    Killing             pod/webapp-7b7c6f5945-8vvxg    Stopping container nginx
+3m52s       Normal    SuccessfulCreate    replicaset/webapp-7989cf7bf9   Created pod: webapp-7989cf7bf9-9ghdr
+3m52s       Normal    Scheduled           pod/webapp-7989cf7bf9-9ghdr    Successfully assigned estudo-felipe/webapp-7989cf7bf9-9ghdr to k8s-worker2
+51s         Normal    Pulling             pod/webapp-7989cf7bf9-9ghdr    Pulling image "nginx:versao-que-nao-existe"
+50s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Error: ErrImagePull
+50s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Failed to pull image "nginx:versao-que-nao-existe": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/library/nginx:versao-que-nao-existe": failed to resolve image: docker.io/library/nginx:versao-que-nao-existe: not found
+16s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Error: ImagePullBackOff
+16s         Normal    BackOff             pod/webapp-7989cf7bf9-9ghdr    Back-off pulling image "nginx:versao-que-nao-existe"
+7s          Normal    SuccessfulDelete    replicaset/webapp-7989cf7bf9   Deleted pod: webapp-7989cf7bf9-9ghdr
+7s          Normal    ScalingReplicaSet   deployment/webapp              (combined from similar events): Scaled down replica set webapp-7989cf7bf9 from 1 to 0
+❯ k get events -n estudo-felipe --sort-by='.lastTimestamp'
+LAST SEEN   TYPE      REASON              OBJECT                         MESSAGE
+57m         Normal    Scheduled           pod/meu-nginx                  Successfully assigned estudo-felipe/meu-nginx to k8s-worker2
+57m         Normal    Pulling             pod/meu-nginx                  Pulling image "nginx:1.27"
+57m         Normal    Pulled              pod/meu-nginx                  Successfully pulled image "nginx:1.27" in 12.977s (12.977s including waiting). Image size: 72406859 bytes.
+57m         Normal    Created             pod/meu-nginx                  Container created
+57m         Normal    Started             pod/meu-nginx                  Container started
+53m         Normal    Killing             pod/meu-nginx                  Stopping container meu-nginx
+43m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 0 to 3
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-j7hc2    Successfully assigned estudo-felipe/webapp-7b7c6f5945-j7hc2 to k8s-worker2
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-tdngs
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-tdngs    Successfully assigned estudo-felipe/webapp-7b7c6f5945-tdngs to k8s-worker2
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-bm4vn    Successfully assigned estudo-felipe/webapp-7b7c6f5945-bm4vn to k8s-worker1
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-bm4vn
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-j7hc2
+43m         Normal    Pulling             pod/webapp-7b7c6f5945-bm4vn    Pulling image "nginx:1.27"
+43m         Normal    Created             pod/webapp-7b7c6f5945-tdngs    Container created
+43m         Normal    Started             pod/webapp-7b7c6f5945-tdngs    Container started
+43m         Normal    Started             pod/webapp-7b7c6f5945-j7hc2    Container started
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-tdngs    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-j7hc2    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+43m         Normal    Created             pod/webapp-7b7c6f5945-j7hc2    Container created
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-bm4vn    Successfully pulled image "nginx:1.27" in 8.356s (8.356s including waiting). Image size: 72406859 bytes.
+43m         Normal    Created             pod/webapp-7b7c6f5945-bm4vn    Container created
+43m         Normal    Started             pod/webapp-7b7c6f5945-bm4vn    Container started
+25m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-jk5vz
+25m         Normal    Killing             pod/webapp-7b7c6f5945-bm4vn    Stopping container nginx
+25m         Normal    Scheduled           pod/webapp-7b7c6f5945-jk5vz    Successfully assigned estudo-felipe/webapp-7b7c6f5945-jk5vz to k8s-worker1
+25m         Normal    Created             pod/webapp-7b7c6f5945-jk5vz    Container created
+25m         Normal    Started             pod/webapp-7b7c6f5945-jk5vz    Container started
+25m         Normal    Pulled              pod/webapp-7b7c6f5945-jk5vz    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+22m         Normal    Created             pod/webapp-7b7c6f5945-fv8zc    Container created
+22m         Normal    Scheduled           pod/webapp-7b7c6f5945-fv8zc    Successfully assigned estudo-felipe/webapp-7b7c6f5945-fv8zc to k8s-worker1
+22m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-fv8zc
+22m         Normal    Killing             pod/webapp-7b7c6f5945-j7hc2    Stopping container nginx
+22m         Normal    Pulled              pod/webapp-7b7c6f5945-fv8zc    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+22m         Normal    Started             pod/webapp-7b7c6f5945-fv8zc    Container started
+20m         Normal    Scheduled           pod/webapp-7b7c6f5945-8vvxg    Successfully assigned estudo-felipe/webapp-7b7c6f5945-8vvxg to k8s-worker2
+20m         Normal    Killing             pod/webapp-7b7c6f5945-tdngs    Stopping container nginx
+20m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgknq
+20m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-8vvxg
+20m         Normal    Killing             pod/webapp-7b7c6f5945-fv8zc    Stopping container nginx
+20m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgknq    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgknq to k8s-worker1
+20m         Normal    Pulled              pod/webapp-7b7c6f5945-hgknq    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+20m         Normal    Created             pod/webapp-7b7c6f5945-hgknq    Container created
+20m         Normal    Started             pod/webapp-7b7c6f5945-hgknq    Container started
+20m         Normal    Started             pod/webapp-7b7c6f5945-8vvxg    Container started
+20m         Normal    Created             pod/webapp-7b7c6f5945-8vvxg    Container created
+20m         Normal    Pulled              pod/webapp-7b7c6f5945-8vvxg    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-p2764    Successfully assigned estudo-felipe/webapp-7b7c6f5945-p2764 to k8s-worker1
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-p2764
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgjxv
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgjxv    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgjxv to k8s-worker2
+19m         Normal    Started             pod/webapp-7b7c6f5945-hgjxv    Container started
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-p2764    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-p2764    Container created
+19m         Normal    Started             pod/webapp-7b7c6f5945-p2764    Container started
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-hgjxv    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-hgjxv    Container created
+18m         Normal    Killing             pod/webapp-7b7c6f5945-p2764    Stopping container nginx
+18m         Normal    Killing             pod/webapp-7b7c6f5945-hgknq    Stopping container nginx
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 3
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgknq
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-p2764
+18m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-t2zm8
+18m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-f2sm7
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 3 to 5
+18m         Normal    Scheduled           pod/webapp-7b7c6f5945-f2sm7    Successfully assigned estudo-felipe/webapp-7b7c6f5945-f2sm7 to k8s-worker1
+18m         Normal    Scheduled           pod/webapp-7b7c6f5945-t2zm8    Successfully assigned estudo-felipe/webapp-7b7c6f5945-t2zm8 to k8s-worker1
+18m         Normal    Started             pod/webapp-7b7c6f5945-t2zm8    Container started
+18m         Normal    Created             pod/webapp-7b7c6f5945-t2zm8    Container created
+18m         Normal    Pulled              pod/webapp-7b7c6f5945-t2zm8    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+18m         Normal    Pulled              pod/webapp-7b7c6f5945-f2sm7    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+18m         Normal    Created             pod/webapp-7b7c6f5945-f2sm7    Container created
+18m         Normal    Started             pod/webapp-7b7c6f5945-f2sm7    Container started
+18m         Normal    Killing             pod/webapp-7b7c6f5945-t2zm8    Stopping container nginx
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 2
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-f2sm7
+18m         Normal    Killing             pod/webapp-7b7c6f5945-jk5vz    Stopping container nginx
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-jk5vz
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-t2zm8
+18m         Normal    Killing             pod/webapp-7b7c6f5945-f2sm7    Stopping container nginx
+8m46s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 2 to 3
+8m46s       Normal    Scheduled           pod/webapp-7b7c6f5945-98p7x    Successfully assigned estudo-felipe/webapp-7b7c6f5945-98p7x to k8s-worker1
+8m46s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 0 to 1
+8m46s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-6mjg6
+8m46s       Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-98p7x
+8m46s       Normal    Scheduled           pod/webapp-69f74bb797-6mjg6    Successfully assigned estudo-felipe/webapp-69f74bb797-6mjg6 to k8s-worker1
+8m45s       Normal    Started             pod/webapp-7b7c6f5945-98p7x    Container started
+8m45s       Normal    Pulled              pod/webapp-7b7c6f5945-98p7x    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+8m45s       Normal    Created             pod/webapp-7b7c6f5945-98p7x    Container created
+8m45s       Normal    Pulling             pod/webapp-69f74bb797-6mjg6    Pulling image "nginx:1.27-alpine"
+8m40s       Normal    Created             pod/webapp-69f74bb797-6mjg6    Container created
+8m40s       Normal    Pulled              pod/webapp-69f74bb797-6mjg6    Successfully pulled image "nginx:1.27-alpine" in 5.433s (5.433s including waiting). Image size: 20984244 bytes.
+8m40s       Normal    Started             pod/webapp-69f74bb797-6mjg6    Container started
+8m39s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-98p7x
+8m39s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 1 to 2
+8m39s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-28dwq
+8m39s       Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 3 to 2
+8m39s       Normal    Scheduled           pod/webapp-69f74bb797-28dwq    Successfully assigned estudo-felipe/webapp-69f74bb797-28dwq to k8s-worker2
+8m39s       Normal    Killing             pod/webapp-7b7c6f5945-98p7x    Stopping container nginx
+8m38s       Normal    Pulling             pod/webapp-69f74bb797-28dwq    Pulling image "nginx:1.27-alpine"
+8m32s       Normal    Created             pod/webapp-69f74bb797-28dwq    Container created
+8m32s       Normal    Pulled              pod/webapp-69f74bb797-28dwq    Successfully pulled image "nginx:1.27-alpine" in 6.538s (6.539s including waiting). Image size: 20984244 bytes.
+8m31s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-jrtz4
+8m31s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 2 to 3
+8m31s       Normal    Started             pod/webapp-69f74bb797-28dwq    Container started
+8m31s       Normal    Killing             pod/webapp-7b7c6f5945-hgjxv    Stopping container nginx
+8m31s       Normal    Scheduled           pod/webapp-69f74bb797-jrtz4    Successfully assigned estudo-felipe/webapp-69f74bb797-jrtz4 to k8s-worker1
+8m31s       Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 2 to 1
+8m31s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgjxv
+8m30s       Normal    Pulled              pod/webapp-69f74bb797-jrtz4    Container image "nginx:1.27-alpine" already present on machine and can be accessed by the pod
+8m30s       Normal    Created             pod/webapp-69f74bb797-jrtz4    Container created
+8m30s       Normal    Started             pod/webapp-69f74bb797-jrtz4    Container started
+8m29s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-8vvxg
+8m29s       Normal    Killing             pod/webapp-7b7c6f5945-8vvxg    Stopping container nginx
+3m53s       Normal    SuccessfulCreate    replicaset/webapp-7989cf7bf9   Created pod: webapp-7989cf7bf9-9ghdr
+3m53s       Normal    Scheduled           pod/webapp-7989cf7bf9-9ghdr    Successfully assigned estudo-felipe/webapp-7989cf7bf9-9ghdr to k8s-worker2
+52s         Normal    Pulling             pod/webapp-7989cf7bf9-9ghdr    Pulling image "nginx:versao-que-nao-existe"
+51s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Error: ErrImagePull
+51s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Failed to pull image "nginx:versao-que-nao-existe": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/library/nginx:versao-que-nao-existe": failed to resolve image: docker.io/library/nginx:versao-que-nao-existe: not found
+17s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Error: ImagePullBackOff
+17s         Normal    BackOff             pod/webapp-7989cf7bf9-9ghdr    Back-off pulling image "nginx:versao-que-nao-existe"
+8s          Normal    SuccessfulDelete    replicaset/webapp-7989cf7bf9   Deleted pod: webapp-7989cf7bf9-9ghdr
+8s          Normal    ScalingReplicaSet   deployment/webapp              (combined from similar events): Scaled down replica set webapp-7989cf7bf9 from 1 to 0
+❯ k get events -n estudo-felipe --sort-by='.lastTimestamp'
+LAST SEEN   TYPE      REASON              OBJECT                         MESSAGE
+57m         Normal    Scheduled           pod/meu-nginx                  Successfully assigned estudo-felipe/meu-nginx to k8s-worker2
+57m         Normal    Pulling             pod/meu-nginx                  Pulling image "nginx:1.27"
+57m         Normal    Pulled              pod/meu-nginx                  Successfully pulled image "nginx:1.27" in 12.977s (12.977s including waiting). Image size: 72406859 bytes.
+57m         Normal    Created             pod/meu-nginx                  Container created
+57m         Normal    Started             pod/meu-nginx                  Container started
+53m         Normal    Killing             pod/meu-nginx                  Stopping container meu-nginx
+43m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 0 to 3
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-j7hc2    Successfully assigned estudo-felipe/webapp-7b7c6f5945-j7hc2 to k8s-worker2
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-tdngs
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-tdngs    Successfully assigned estudo-felipe/webapp-7b7c6f5945-tdngs to k8s-worker2
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-bm4vn    Successfully assigned estudo-felipe/webapp-7b7c6f5945-bm4vn to k8s-worker1
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-bm4vn
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-j7hc2
+43m         Normal    Pulling             pod/webapp-7b7c6f5945-bm4vn    Pulling image "nginx:1.27"
+43m         Normal    Created             pod/webapp-7b7c6f5945-tdngs    Container created
+43m         Normal    Started             pod/webapp-7b7c6f5945-tdngs    Container started
+43m         Normal    Started             pod/webapp-7b7c6f5945-j7hc2    Container started
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-tdngs    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-j7hc2    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+43m         Normal    Created             pod/webapp-7b7c6f5945-j7hc2    Container created
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-bm4vn    Successfully pulled image "nginx:1.27" in 8.356s (8.356s including waiting). Image size: 72406859 bytes.
+43m         Normal    Created             pod/webapp-7b7c6f5945-bm4vn    Container created
+43m         Normal    Started             pod/webapp-7b7c6f5945-bm4vn    Container started
+25m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-jk5vz
+25m         Normal    Killing             pod/webapp-7b7c6f5945-bm4vn    Stopping container nginx
+25m         Normal    Scheduled           pod/webapp-7b7c6f5945-jk5vz    Successfully assigned estudo-felipe/webapp-7b7c6f5945-jk5vz to k8s-worker1
+25m         Normal    Created             pod/webapp-7b7c6f5945-jk5vz    Container created
+25m         Normal    Started             pod/webapp-7b7c6f5945-jk5vz    Container started
+25m         Normal    Pulled              pod/webapp-7b7c6f5945-jk5vz    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+22m         Normal    Created             pod/webapp-7b7c6f5945-fv8zc    Container created
+22m         Normal    Scheduled           pod/webapp-7b7c6f5945-fv8zc    Successfully assigned estudo-felipe/webapp-7b7c6f5945-fv8zc to k8s-worker1
+22m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-fv8zc
+22m         Normal    Killing             pod/webapp-7b7c6f5945-j7hc2    Stopping container nginx
+22m         Normal    Pulled              pod/webapp-7b7c6f5945-fv8zc    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+22m         Normal    Started             pod/webapp-7b7c6f5945-fv8zc    Container started
+20m         Normal    Scheduled           pod/webapp-7b7c6f5945-8vvxg    Successfully assigned estudo-felipe/webapp-7b7c6f5945-8vvxg to k8s-worker2
+20m         Normal    Killing             pod/webapp-7b7c6f5945-tdngs    Stopping container nginx
+20m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgknq
+20m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-8vvxg
+20m         Normal    Killing             pod/webapp-7b7c6f5945-fv8zc    Stopping container nginx
+20m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgknq    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgknq to k8s-worker1
+20m         Normal    Pulled              pod/webapp-7b7c6f5945-hgknq    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+20m         Normal    Created             pod/webapp-7b7c6f5945-hgknq    Container created
+20m         Normal    Started             pod/webapp-7b7c6f5945-hgknq    Container started
+20m         Normal    Started             pod/webapp-7b7c6f5945-8vvxg    Container started
+20m         Normal    Created             pod/webapp-7b7c6f5945-8vvxg    Container created
+20m         Normal    Pulled              pod/webapp-7b7c6f5945-8vvxg    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-p2764    Successfully assigned estudo-felipe/webapp-7b7c6f5945-p2764 to k8s-worker1
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-p2764
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgjxv
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgjxv    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgjxv to k8s-worker2
+19m         Normal    Started             pod/webapp-7b7c6f5945-hgjxv    Container started
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-p2764    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-p2764    Container created
+19m         Normal    Started             pod/webapp-7b7c6f5945-p2764    Container started
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-hgjxv    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-hgjxv    Container created
+18m         Normal    Killing             pod/webapp-7b7c6f5945-p2764    Stopping container nginx
+18m         Normal    Killing             pod/webapp-7b7c6f5945-hgknq    Stopping container nginx
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 3
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgknq
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-p2764
+18m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-t2zm8
+18m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-f2sm7
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 3 to 5
+18m         Normal    Scheduled           pod/webapp-7b7c6f5945-f2sm7    Successfully assigned estudo-felipe/webapp-7b7c6f5945-f2sm7 to k8s-worker1
+18m         Normal    Scheduled           pod/webapp-7b7c6f5945-t2zm8    Successfully assigned estudo-felipe/webapp-7b7c6f5945-t2zm8 to k8s-worker1
+18m         Normal    Started             pod/webapp-7b7c6f5945-t2zm8    Container started
+18m         Normal    Created             pod/webapp-7b7c6f5945-t2zm8    Container created
+18m         Normal    Pulled              pod/webapp-7b7c6f5945-t2zm8    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+18m         Normal    Pulled              pod/webapp-7b7c6f5945-f2sm7    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+18m         Normal    Created             pod/webapp-7b7c6f5945-f2sm7    Container created
+18m         Normal    Started             pod/webapp-7b7c6f5945-f2sm7    Container started
+18m         Normal    Killing             pod/webapp-7b7c6f5945-t2zm8    Stopping container nginx
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 2
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-f2sm7
+18m         Normal    Killing             pod/webapp-7b7c6f5945-jk5vz    Stopping container nginx
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-jk5vz
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-t2zm8
+18m         Normal    Killing             pod/webapp-7b7c6f5945-f2sm7    Stopping container nginx
+8m47s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 2 to 3
+8m47s       Normal    Scheduled           pod/webapp-7b7c6f5945-98p7x    Successfully assigned estudo-felipe/webapp-7b7c6f5945-98p7x to k8s-worker1
+8m47s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 0 to 1
+8m47s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-6mjg6
+8m47s       Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-98p7x
+8m47s       Normal    Scheduled           pod/webapp-69f74bb797-6mjg6    Successfully assigned estudo-felipe/webapp-69f74bb797-6mjg6 to k8s-worker1
+8m46s       Normal    Started             pod/webapp-7b7c6f5945-98p7x    Container started
+8m46s       Normal    Pulled              pod/webapp-7b7c6f5945-98p7x    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+8m46s       Normal    Created             pod/webapp-7b7c6f5945-98p7x    Container created
+8m46s       Normal    Pulling             pod/webapp-69f74bb797-6mjg6    Pulling image "nginx:1.27-alpine"
+8m41s       Normal    Created             pod/webapp-69f74bb797-6mjg6    Container created
+8m41s       Normal    Pulled              pod/webapp-69f74bb797-6mjg6    Successfully pulled image "nginx:1.27-alpine" in 5.433s (5.433s including waiting). Image size: 20984244 bytes.
+8m41s       Normal    Started             pod/webapp-69f74bb797-6mjg6    Container started
+8m40s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-98p7x
+8m40s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 1 to 2
+8m40s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-28dwq
+8m40s       Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 3 to 2
+8m40s       Normal    Scheduled           pod/webapp-69f74bb797-28dwq    Successfully assigned estudo-felipe/webapp-69f74bb797-28dwq to k8s-worker2
+8m40s       Normal    Killing             pod/webapp-7b7c6f5945-98p7x    Stopping container nginx
+8m39s       Normal    Pulling             pod/webapp-69f74bb797-28dwq    Pulling image "nginx:1.27-alpine"
+8m33s       Normal    Created             pod/webapp-69f74bb797-28dwq    Container created
+8m33s       Normal    Pulled              pod/webapp-69f74bb797-28dwq    Successfully pulled image "nginx:1.27-alpine" in 6.538s (6.539s including waiting). Image size: 20984244 bytes.
+8m32s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-jrtz4
+8m32s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 2 to 3
+8m32s       Normal    Started             pod/webapp-69f74bb797-28dwq    Container started
+8m32s       Normal    Killing             pod/webapp-7b7c6f5945-hgjxv    Stopping container nginx
+8m32s       Normal    Scheduled           pod/webapp-69f74bb797-jrtz4    Successfully assigned estudo-felipe/webapp-69f74bb797-jrtz4 to k8s-worker1
+8m32s       Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 2 to 1
+8m32s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgjxv
+8m31s       Normal    Pulled              pod/webapp-69f74bb797-jrtz4    Container image "nginx:1.27-alpine" already present on machine and can be accessed by the pod
+8m31s       Normal    Created             pod/webapp-69f74bb797-jrtz4    Container created
+8m31s       Normal    Started             pod/webapp-69f74bb797-jrtz4    Container started
+8m30s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-8vvxg
+8m30s       Normal    Killing             pod/webapp-7b7c6f5945-8vvxg    Stopping container nginx
+3m54s       Normal    SuccessfulCreate    replicaset/webapp-7989cf7bf9   Created pod: webapp-7989cf7bf9-9ghdr
+3m54s       Normal    Scheduled           pod/webapp-7989cf7bf9-9ghdr    Successfully assigned estudo-felipe/webapp-7989cf7bf9-9ghdr to k8s-worker2
+53s         Normal    Pulling             pod/webapp-7989cf7bf9-9ghdr    Pulling image "nginx:versao-que-nao-existe"
+52s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Error: ErrImagePull
+52s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Failed to pull image "nginx:versao-que-nao-existe": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/library/nginx:versao-que-nao-existe": failed to resolve image: docker.io/library/nginx:versao-que-nao-existe: not found
+18s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Error: ImagePullBackOff
+18s         Normal    BackOff             pod/webapp-7989cf7bf9-9ghdr    Back-off pulling image "nginx:versao-que-nao-existe"
+9s          Normal    SuccessfulDelete    replicaset/webapp-7989cf7bf9   Deleted pod: webapp-7989cf7bf9-9ghdr
+9s          Normal    ScalingReplicaSet   deployment/webapp              (combined from similar events): Scaled down replica set webapp-7989cf7bf9 from 1 to 0
+❯ k get events -n estudo-felipe --sort-by='.lastTimestamp'
+LAST SEEN   TYPE      REASON              OBJECT                         MESSAGE
+57m         Normal    Scheduled           pod/meu-nginx                  Successfully assigned estudo-felipe/meu-nginx to k8s-worker2
+57m         Normal    Pulling             pod/meu-nginx                  Pulling image "nginx:1.27"
+57m         Normal    Pulled              pod/meu-nginx                  Successfully pulled image "nginx:1.27" in 12.977s (12.977s including waiting). Image size: 72406859 bytes.
+57m         Normal    Created             pod/meu-nginx                  Container created
+57m         Normal    Started             pod/meu-nginx                  Container started
+53m         Normal    Killing             pod/meu-nginx                  Stopping container meu-nginx
+43m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 0 to 3
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-j7hc2    Successfully assigned estudo-felipe/webapp-7b7c6f5945-j7hc2 to k8s-worker2
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-tdngs
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-tdngs    Successfully assigned estudo-felipe/webapp-7b7c6f5945-tdngs to k8s-worker2
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-bm4vn    Successfully assigned estudo-felipe/webapp-7b7c6f5945-bm4vn to k8s-worker1
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-bm4vn
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-j7hc2
+43m         Normal    Pulling             pod/webapp-7b7c6f5945-bm4vn    Pulling image "nginx:1.27"
+43m         Normal    Created             pod/webapp-7b7c6f5945-tdngs    Container created
+43m         Normal    Started             pod/webapp-7b7c6f5945-tdngs    Container started
+43m         Normal    Started             pod/webapp-7b7c6f5945-j7hc2    Container started
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-tdngs    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-j7hc2    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+43m         Normal    Created             pod/webapp-7b7c6f5945-j7hc2    Container created
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-bm4vn    Successfully pulled image "nginx:1.27" in 8.356s (8.356s including waiting). Image size: 72406859 bytes.
+43m         Normal    Created             pod/webapp-7b7c6f5945-bm4vn    Container created
+43m         Normal    Started             pod/webapp-7b7c6f5945-bm4vn    Container started
+25m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-jk5vz
+25m         Normal    Killing             pod/webapp-7b7c6f5945-bm4vn    Stopping container nginx
+25m         Normal    Scheduled           pod/webapp-7b7c6f5945-jk5vz    Successfully assigned estudo-felipe/webapp-7b7c6f5945-jk5vz to k8s-worker1
+25m         Normal    Created             pod/webapp-7b7c6f5945-jk5vz    Container created
+25m         Normal    Started             pod/webapp-7b7c6f5945-jk5vz    Container started
+25m         Normal    Pulled              pod/webapp-7b7c6f5945-jk5vz    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+22m         Normal    Created             pod/webapp-7b7c6f5945-fv8zc    Container created
+22m         Normal    Scheduled           pod/webapp-7b7c6f5945-fv8zc    Successfully assigned estudo-felipe/webapp-7b7c6f5945-fv8zc to k8s-worker1
+22m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-fv8zc
+22m         Normal    Killing             pod/webapp-7b7c6f5945-j7hc2    Stopping container nginx
+22m         Normal    Pulled              pod/webapp-7b7c6f5945-fv8zc    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+22m         Normal    Started             pod/webapp-7b7c6f5945-fv8zc    Container started
+20m         Normal    Scheduled           pod/webapp-7b7c6f5945-8vvxg    Successfully assigned estudo-felipe/webapp-7b7c6f5945-8vvxg to k8s-worker2
+20m         Normal    Killing             pod/webapp-7b7c6f5945-tdngs    Stopping container nginx
+20m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgknq
+20m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-8vvxg
+20m         Normal    Killing             pod/webapp-7b7c6f5945-fv8zc    Stopping container nginx
+20m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgknq    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgknq to k8s-worker1
+20m         Normal    Pulled              pod/webapp-7b7c6f5945-hgknq    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+20m         Normal    Created             pod/webapp-7b7c6f5945-hgknq    Container created
+20m         Normal    Started             pod/webapp-7b7c6f5945-hgknq    Container started
+20m         Normal    Started             pod/webapp-7b7c6f5945-8vvxg    Container started
+20m         Normal    Created             pod/webapp-7b7c6f5945-8vvxg    Container created
+20m         Normal    Pulled              pod/webapp-7b7c6f5945-8vvxg    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-p2764    Successfully assigned estudo-felipe/webapp-7b7c6f5945-p2764 to k8s-worker1
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-p2764
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgjxv
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgjxv    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgjxv to k8s-worker2
+19m         Normal    Started             pod/webapp-7b7c6f5945-hgjxv    Container started
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-p2764    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-p2764    Container created
+19m         Normal    Started             pod/webapp-7b7c6f5945-p2764    Container started
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-hgjxv    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-hgjxv    Container created
+18m         Normal    Killing             pod/webapp-7b7c6f5945-p2764    Stopping container nginx
+18m         Normal    Killing             pod/webapp-7b7c6f5945-hgknq    Stopping container nginx
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 3
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgknq
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-p2764
+18m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-t2zm8
+18m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-f2sm7
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 3 to 5
+18m         Normal    Scheduled           pod/webapp-7b7c6f5945-f2sm7    Successfully assigned estudo-felipe/webapp-7b7c6f5945-f2sm7 to k8s-worker1
+18m         Normal    Scheduled           pod/webapp-7b7c6f5945-t2zm8    Successfully assigned estudo-felipe/webapp-7b7c6f5945-t2zm8 to k8s-worker1
+18m         Normal    Started             pod/webapp-7b7c6f5945-t2zm8    Container started
+18m         Normal    Created             pod/webapp-7b7c6f5945-t2zm8    Container created
+18m         Normal    Pulled              pod/webapp-7b7c6f5945-t2zm8    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+18m         Normal    Pulled              pod/webapp-7b7c6f5945-f2sm7    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+18m         Normal    Created             pod/webapp-7b7c6f5945-f2sm7    Container created
+18m         Normal    Started             pod/webapp-7b7c6f5945-f2sm7    Container started
+18m         Normal    Killing             pod/webapp-7b7c6f5945-t2zm8    Stopping container nginx
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 2
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-f2sm7
+18m         Normal    Killing             pod/webapp-7b7c6f5945-jk5vz    Stopping container nginx
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-jk5vz
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-t2zm8
+18m         Normal    Killing             pod/webapp-7b7c6f5945-f2sm7    Stopping container nginx
+8m48s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 2 to 3
+8m48s       Normal    Scheduled           pod/webapp-7b7c6f5945-98p7x    Successfully assigned estudo-felipe/webapp-7b7c6f5945-98p7x to k8s-worker1
+8m48s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 0 to 1
+8m48s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-6mjg6
+8m48s       Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-98p7x
+8m48s       Normal    Scheduled           pod/webapp-69f74bb797-6mjg6    Successfully assigned estudo-felipe/webapp-69f74bb797-6mjg6 to k8s-worker1
+8m47s       Normal    Started             pod/webapp-7b7c6f5945-98p7x    Container started
+8m47s       Normal    Pulled              pod/webapp-7b7c6f5945-98p7x    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+8m47s       Normal    Created             pod/webapp-7b7c6f5945-98p7x    Container created
+8m47s       Normal    Pulling             pod/webapp-69f74bb797-6mjg6    Pulling image "nginx:1.27-alpine"
+8m42s       Normal    Created             pod/webapp-69f74bb797-6mjg6    Container created
+8m42s       Normal    Pulled              pod/webapp-69f74bb797-6mjg6    Successfully pulled image "nginx:1.27-alpine" in 5.433s (5.433s including waiting). Image size: 20984244 bytes.
+❯ k get events -n estudo-felipe --sort-by='.lastTimestamp'
+LAST SEEN   TYPE      REASON              OBJECT                         MESSAGE
+57m         Normal    Scheduled           pod/meu-nginx                  Successfully assigned estudo-felipe/meu-nginx to k8s-worker2
+57m         Normal    Pulling             pod/meu-nginx                  Pulling image "nginx:1.27"
+57m         Normal    Pulled              pod/meu-nginx                  Successfully pulled image "nginx:1.27" in 12.977s (12.977s including waiting). Image size: 72406859 bytes.
+57m         Normal    Created             pod/meu-nginx                  Container created
+57m         Normal    Started             pod/meu-nginx                  Container started
+53m         Normal    Killing             pod/meu-nginx                  Stopping container meu-nginx
+43m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 0 to 3
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-j7hc2    Successfully assigned estudo-felipe/webapp-7b7c6f5945-j7hc2 to k8s-worker2
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-tdngs
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-tdngs    Successfully assigned estudo-felipe/webapp-7b7c6f5945-tdngs to k8s-worker2
+43m         Normal    Scheduled           pod/webapp-7b7c6f5945-bm4vn    Successfully assigned estudo-felipe/webapp-7b7c6f5945-bm4vn to k8s-worker1
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-bm4vn
+43m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-j7hc2
+43m         Normal    Pulling             pod/webapp-7b7c6f5945-bm4vn    Pulling image "nginx:1.27"
+43m         Normal    Created             pod/webapp-7b7c6f5945-tdngs    Container created
+43m         Normal    Started             pod/webapp-7b7c6f5945-tdngs    Container started
+43m         Normal    Started             pod/webapp-7b7c6f5945-j7hc2    Container started
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-tdngs    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-j7hc2    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+43m         Normal    Created             pod/webapp-7b7c6f5945-j7hc2    Container created
+43m         Normal    Pulled              pod/webapp-7b7c6f5945-bm4vn    Successfully pulled image "nginx:1.27" in 8.356s (8.356s including waiting). Image size: 72406859 bytes.
+43m         Normal    Created             pod/webapp-7b7c6f5945-bm4vn    Container created
+43m         Normal    Started             pod/webapp-7b7c6f5945-bm4vn    Container started
+25m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-jk5vz
+25m         Normal    Killing             pod/webapp-7b7c6f5945-bm4vn    Stopping container nginx
+25m         Normal    Scheduled           pod/webapp-7b7c6f5945-jk5vz    Successfully assigned estudo-felipe/webapp-7b7c6f5945-jk5vz to k8s-worker1
+25m         Normal    Created             pod/webapp-7b7c6f5945-jk5vz    Container created
+25m         Normal    Started             pod/webapp-7b7c6f5945-jk5vz    Container started
+25m         Normal    Pulled              pod/webapp-7b7c6f5945-jk5vz    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+22m         Normal    Created             pod/webapp-7b7c6f5945-fv8zc    Container created
+22m         Normal    Scheduled           pod/webapp-7b7c6f5945-fv8zc    Successfully assigned estudo-felipe/webapp-7b7c6f5945-fv8zc to k8s-worker1
+22m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-fv8zc
+22m         Normal    Killing             pod/webapp-7b7c6f5945-j7hc2    Stopping container nginx
+22m         Normal    Pulled              pod/webapp-7b7c6f5945-fv8zc    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+22m         Normal    Started             pod/webapp-7b7c6f5945-fv8zc    Container started
+21m         Normal    Scheduled           pod/webapp-7b7c6f5945-8vvxg    Successfully assigned estudo-felipe/webapp-7b7c6f5945-8vvxg to k8s-worker2
+21m         Normal    Killing             pod/webapp-7b7c6f5945-tdngs    Stopping container nginx
+21m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgknq
+21m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-8vvxg
+21m         Normal    Killing             pod/webapp-7b7c6f5945-fv8zc    Stopping container nginx
+21m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgknq    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgknq to k8s-worker1
+21m         Normal    Pulled              pod/webapp-7b7c6f5945-hgknq    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+21m         Normal    Created             pod/webapp-7b7c6f5945-hgknq    Container created
+21m         Normal    Started             pod/webapp-7b7c6f5945-hgknq    Container started
+21m         Normal    Started             pod/webapp-7b7c6f5945-8vvxg    Container started
+21m         Normal    Created             pod/webapp-7b7c6f5945-8vvxg    Container created
+21m         Normal    Pulled              pod/webapp-7b7c6f5945-8vvxg    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-p2764    Successfully assigned estudo-felipe/webapp-7b7c6f5945-p2764 to k8s-worker1
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-p2764
+19m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-hgjxv
+19m         Normal    Scheduled           pod/webapp-7b7c6f5945-hgjxv    Successfully assigned estudo-felipe/webapp-7b7c6f5945-hgjxv to k8s-worker2
+19m         Normal    Started             pod/webapp-7b7c6f5945-hgjxv    Container started
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-p2764    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-p2764    Container created
+19m         Normal    Started             pod/webapp-7b7c6f5945-p2764    Container started
+19m         Normal    Pulled              pod/webapp-7b7c6f5945-hgjxv    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/webapp-7b7c6f5945-hgjxv    Container created
+18m         Normal    Killing             pod/webapp-7b7c6f5945-p2764    Stopping container nginx
+18m         Normal    Killing             pod/webapp-7b7c6f5945-hgknq    Stopping container nginx
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 3
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgknq
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-p2764
+18m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-t2zm8
+18m         Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-f2sm7
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 3 to 5
+18m         Normal    Scheduled           pod/webapp-7b7c6f5945-f2sm7    Successfully assigned estudo-felipe/webapp-7b7c6f5945-f2sm7 to k8s-worker1
+18m         Normal    Scheduled           pod/webapp-7b7c6f5945-t2zm8    Successfully assigned estudo-felipe/webapp-7b7c6f5945-t2zm8 to k8s-worker1
+18m         Normal    Started             pod/webapp-7b7c6f5945-t2zm8    Container started
+18m         Normal    Created             pod/webapp-7b7c6f5945-t2zm8    Container created
+18m         Normal    Pulled              pod/webapp-7b7c6f5945-t2zm8    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+18m         Normal    Pulled              pod/webapp-7b7c6f5945-f2sm7    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+18m         Normal    Created             pod/webapp-7b7c6f5945-f2sm7    Container created
+18m         Normal    Started             pod/webapp-7b7c6f5945-f2sm7    Container started
+18m         Normal    Killing             pod/webapp-7b7c6f5945-t2zm8    Stopping container nginx
+18m         Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 5 to 2
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-f2sm7
+18m         Normal    Killing             pod/webapp-7b7c6f5945-jk5vz    Stopping container nginx
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-jk5vz
+18m         Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-t2zm8
+18m         Normal    Killing             pod/webapp-7b7c6f5945-f2sm7    Stopping container nginx
+9m1s        Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-7b7c6f5945 from 2 to 3
+9m1s        Normal    Scheduled           pod/webapp-7b7c6f5945-98p7x    Successfully assigned estudo-felipe/webapp-7b7c6f5945-98p7x to k8s-worker1
+9m1s        Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 0 to 1
+9m1s        Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-6mjg6
+9m1s        Normal    SuccessfulCreate    replicaset/webapp-7b7c6f5945   Created pod: webapp-7b7c6f5945-98p7x
+9m1s        Normal    Scheduled           pod/webapp-69f74bb797-6mjg6    Successfully assigned estudo-felipe/webapp-69f74bb797-6mjg6 to k8s-worker1
+9m          Normal    Started             pod/webapp-7b7c6f5945-98p7x    Container started
+9m          Normal    Pulled              pod/webapp-7b7c6f5945-98p7x    Container image "nginx:1.27" already present on machine and can be accessed by the pod
+9m          Normal    Created             pod/webapp-7b7c6f5945-98p7x    Container created
+9m          Normal    Pulling             pod/webapp-69f74bb797-6mjg6    Pulling image "nginx:1.27-alpine"
+8m55s       Normal    Created             pod/webapp-69f74bb797-6mjg6    Container created
+8m55s       Normal    Pulled              pod/webapp-69f74bb797-6mjg6    Successfully pulled image "nginx:1.27-alpine" in 5.433s (5.433s including waiting). Image size: 20984244 bytes.
+8m55s       Normal    Started             pod/webapp-69f74bb797-6mjg6    Container started
+8m54s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-98p7x
+8m54s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 1 to 2
+8m54s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-28dwq
+8m54s       Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 3 to 2
+8m54s       Normal    Scheduled           pod/webapp-69f74bb797-28dwq    Successfully assigned estudo-felipe/webapp-69f74bb797-28dwq to k8s-worker2
+8m54s       Normal    Killing             pod/webapp-7b7c6f5945-98p7x    Stopping container nginx
+8m53s       Normal    Pulling             pod/webapp-69f74bb797-28dwq    Pulling image "nginx:1.27-alpine"
+8m47s       Normal    Created             pod/webapp-69f74bb797-28dwq    Container created
+8m47s       Normal    Pulled              pod/webapp-69f74bb797-28dwq    Successfully pulled image "nginx:1.27-alpine" in 6.538s (6.539s including waiting). Image size: 20984244 bytes.
+8m46s       Normal    SuccessfulCreate    replicaset/webapp-69f74bb797   Created pod: webapp-69f74bb797-jrtz4
+8m46s       Normal    ScalingReplicaSet   deployment/webapp              Scaled up replica set webapp-69f74bb797 from 2 to 3
+8m46s       Normal    Started             pod/webapp-69f74bb797-28dwq    Container started
+8m46s       Normal    Killing             pod/webapp-7b7c6f5945-hgjxv    Stopping container nginx
+8m46s       Normal    Scheduled           pod/webapp-69f74bb797-jrtz4    Successfully assigned estudo-felipe/webapp-69f74bb797-jrtz4 to k8s-worker1
+8m46s       Normal    ScalingReplicaSet   deployment/webapp              Scaled down replica set webapp-7b7c6f5945 from 2 to 1
+8m46s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-hgjxv
+8m45s       Normal    Pulled              pod/webapp-69f74bb797-jrtz4    Container image "nginx:1.27-alpine" already present on machine and can be accessed by the pod
+8m45s       Normal    Created             pod/webapp-69f74bb797-jrtz4    Container created
+8m45s       Normal    Started             pod/webapp-69f74bb797-jrtz4    Container started
+8m44s       Normal    SuccessfulDelete    replicaset/webapp-7b7c6f5945   Deleted pod: webapp-7b7c6f5945-8vvxg
+8m44s       Normal    Killing             pod/webapp-7b7c6f5945-8vvxg    Stopping container nginx
+4m8s        Normal    SuccessfulCreate    replicaset/webapp-7989cf7bf9   Created pod: webapp-7989cf7bf9-9ghdr
+4m8s        Normal    Scheduled           pod/webapp-7989cf7bf9-9ghdr    Successfully assigned estudo-felipe/webapp-7989cf7bf9-9ghdr to k8s-worker2
+67s         Normal    Pulling             pod/webapp-7989cf7bf9-9ghdr    Pulling image "nginx:versao-que-nao-existe"
+66s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Error: ErrImagePull
+66s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Failed to pull image "nginx:versao-que-nao-existe": rpc error: code = NotFound desc = failed to pull and unpack image "docker.io/library/nginx:versao-que-nao-existe": failed to resolve image: docker.io/library/nginx:versao-que-nao-existe: not found
+32s         Warning   Failed              pod/webapp-7989cf7bf9-9ghdr    Error: ImagePullBackOff
+32s         Normal    BackOff             pod/webapp-7989cf7bf9-9ghdr    Back-off pulling image "nginx:versao-que-nao-existe"
+23s         Normal    SuccessfulDelete    replicaset/webapp-7989cf7bf9   Deleted pod: webapp-7989cf7bf9-9ghdr
+23s         Normal    ScalingReplicaSet   deployment/webapp              (combined from similar events): Scaled down replica set webapp-7989cf7bf9 from 1 to 0
+
+❯ k rollout status -n estudo-felipe deployment webapp
+Waiting for deployment "webapp" rollout to finish: 1 out of 3 new replicas have been updated...
+^L^C
+❯ k rollout undo -n estudo-felipe deployment webapp
+deployment.apps/webapp rolled back
+❯ k rollout status -n estudo-felipe deployment webapp
+deployment "webapp" successfully rolled out
+❯ k get pod -n estudo-felipe -owide -w
+NAME                      READY   STATUS    RESTARTS   AGE     IP                NODE          NOMINATED NODE   READINESS GATES
+webapp-69f74bb797-28dwq   1/1     Running   0          9m45s   192.168.126.49    k8s-worker2   <none>           <none>
+webapp-69f74bb797-6mjg6   1/1     Running   0          9m52s   192.168.194.107   k8s-worker1   <none>           <none>
+webapp-69f74bb797-jrtz4   1/1     Running   0          9m37s   192.168.194.108   k8s-worker1   <none>           <none>
+  
+Exercício 6 
+
+ k describe -n estudo-felipe pod broken-app
+Name:             broken-app
+Namespace:        estudo-felipe
+Priority:         0
+Service Account:  default
+Node:             k8s-worker2/192.168.3.32
+Start Time:       Mon, 13 Apr 2026 19:55:52 -0300
+Labels:           app=broken-app
+Annotations:      <none>
+Status:           Pending
+IP:
+IPs:              <none>
+Containers:
+  app:
+    Container ID:  
+    Image:         nginx:1.27
+    Image ID:      
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /bin/sh
+      -c
+      cat /config/app.conf && nginx -g 'daemon off;'
+    State:          Waiting
+      Reason:       ContainerCreating
+    Ready:          False
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /config from config-vol (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-vt7ps (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  config-vol:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      app-config-inexistente
+    Optional:  false
+  kube-api-access-vt7ps:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason       Age                  From               Message
+  ----     ------       ----                 ----               -------
+  Normal   Scheduled    2m19s                default-scheduler  Successfully assigned estudo-felipe/broken-app to k8s-worker2
+  Warning  FailedMount  11s (x9 over 2m19s)  kubelet            MountVolume.SetUp failed for volume "config-vol" : configmap "app-config-inexistente" not found
+
+** pod sem configmap 
+
+
+

@@ -1,0 +1,16 @@
+# Obsidian — estado pessoal (não versionar)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+
+# Obsidian — configurações de plugins (versionar o resto)
+.trash/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporários
+*.tmp
+*.bak

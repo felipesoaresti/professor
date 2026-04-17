@@ -1,0 +1,55 @@
+filters:
+  and:
+    - file.ext == "md"
+    - not:
+        - file.inFolder("11-Exercicios/exemplos")
+formulas:
+  tipo_label: if(tipo == "conteudo", "📚 Conteúdo", if(tipo == "exercicios", "🧪 Exercícios", "📄 Outro"))
+  area_label: if(area, area, "")
+properties:
+  tipo:
+    displayName: Tipo
+  area:
+    displayName: Área
+  formula.area_label:
+    displayName: Área
+  file.mtime:
+    displayName: Modificado
+views:
+  - type: table
+    name: Todos os Arquivos
+    groupBy:
+      property: area
+      direction: ASC
+    order:
+      - file.name
+      - formula.tipo_label
+      - area
+      - file.mtime
+    columnSize:
+      file.name: 186
+      formula.tipo_label: 190
+  - type: table
+    name: Conteúdo
+    filters:
+      and:
+        - tipo == "conteudo"
+    order:
+      - file.name
+      - area
+      - file.mtime
+  - type: table
+    name: Exercícios
+    filters:
+      and:
+        - tipo == "exercicios"
+    order:
+      - file.name
+      - area
+      - file.mtime
+  - type: cards
+    name: Por Área
+    order:
+      - file.name
+      - formula.tipo_label
+      - area
