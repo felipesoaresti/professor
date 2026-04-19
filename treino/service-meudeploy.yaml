@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: webapp
+  name: webapp
+  namespace: estudo
+spec:
+  type: ClusterIP 
+  ports:
+  - port: 80
+  selector:
+    app: webapp
