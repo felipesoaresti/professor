@@ -1,18 +1,17 @@
 ---
 tags:
-  - networking
   - linux
   - ssh
   - openssh
   - segurança
-area: networking
+area: linux
 tipo: conteudo
 prerequisites:
   - "[[01-Linux/lvm-dispositivos-disco]]"
 next:
   - "[[11-Exercicios/ssh-openssh]]"
   - "[[12-Labs/ssh-openssh]]"
-trilha: "[[00-Trilha/networking]]"
+trilha: "[[00-Trilha/linux]]"
 ---
 
 # SSH / OpenSSH

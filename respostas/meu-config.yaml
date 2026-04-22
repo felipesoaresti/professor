@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: meu-config
+  namespace: estudo
+data: 
+  APP_ENV: "producao"
+  APP_PORT: "8080"
+  LOG_LEVEL: "info"
+nginx.conf: |
+  server {
+        listen 80;
+        server_name localhost;
+        location / {
+            root /usr/share/nginx/html;
+        }
+    }

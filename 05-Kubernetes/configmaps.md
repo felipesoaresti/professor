@@ -212,13 +212,13 @@ volumeMounts:
 
 ### Quando usar volume vs variável de ambiente
 
-| Cenário | Recomendação |
-|---|---|
-| Configuração que muda em runtime (sem restart) | Volume |
-| Arquivo de configuração estruturado (nginx.conf, etc.) | Volume |
-| Variáveis simples que a aplicação lê uma vez | env var |
-| Muitas variáveis para não listar uma a uma | `envFrom` |
-| Arquivo montado em path exato sobrescrevendo outro | `subPath` (sem auto-update) |
+| Cenário                                                | Recomendação                |
+| ------------------------------------------------------ | --------------------------- |
+| Configuração que muda em runtime (sem restart)         | Volume                      |
+| Arquivo de configuração estruturado (nginx.conf, etc.) | Volume                      |
+| Variáveis simples que a aplicação lê uma vez           | env var                     |
+| Muitas variáveis para não listar uma a uma             | `envFrom`                   |
+| Arquivo montado em path exato sobrescrevendo outro     | `subPath` (sem auto-update) |
 
 ### Naming e organização
 

@@ -39,6 +39,9 @@ tipo: trilha
 9. /proc e /sys — leitura sem ferramentas externas *(a fazer)*
 10. ftrace e kprobes — kernel tracing *(a fazer)*
 
+| rsync | [[01-Linux/rsync]] | [[11-Exercicios/rsync]] | Exercícios gerados — pendente execução |
+| SSH / OpenSSH | [[01-Linux/ssh-openssh]] | [[11-Exercicios/ssh-openssh]] | [[12-Labs/ssh-openssh]] | Conteúdo gerado — pendente exercícios |
+
 ## Próximo Sugerido
 
 **perf e flamegraphs** — agora que você entende CFS, cgroups e estados de processo, o passo natural é instrumentar CPU com `perf record` + flamegraph para ver onde o tempo realmente vai. Direto para troubleshooting de latência em produção.

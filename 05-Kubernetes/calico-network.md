@@ -1,19 +1,18 @@
 ---
 tags:
-  - networking
   - kubernetes
   - calico
   - cni
   - bgp
   - networkpolicy
-area: networking
+area: kubernetes
 tipo: conteudo
 prerequisites:
   - "[[05-Kubernetes/kubernetes-teoria-inicial]]"
   - "[[05-Kubernetes/cluster-kubeadm-cni-kind]]"
 next:
   - "[[11-Exercicios/calico-network]]"
-trilha: "[[00-Trilha/networking]]"
+trilha: "[[00-Trilha/kubernetes]]"
 ---
 
 # Calico Network

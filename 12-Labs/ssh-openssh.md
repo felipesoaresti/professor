@@ -1,15 +1,14 @@
 ---
 tags:
   - labs
-  - networking
   - linux
   - ssh
   - openssh
 tipo: lab
-area: networking
-conteudo: "[[02-Networking/ssh-openssh]]"
+area: linux
+conteudo: "[[01-Linux/ssh-openssh]]"
 exercicios: "[[11-Exercicios/ssh-openssh]]"
-trilha: "[[00-Trilha/networking]]"
+trilha: "[[00-Trilha/linux]]"
 ---
 
 # Lab — SSH / OpenSSH

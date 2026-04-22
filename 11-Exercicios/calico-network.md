@@ -1,14 +1,13 @@
 ---
 tags:
   - exercicios
-  - networking
   - kubernetes
   - calico
   - networkpolicy
 tipo: exercicios
-area: networking
-conteudo: "[[02-Networking/calico-network]]"
-trilha: "[[00-Trilha/networking]]"
+area: kubernetes
+conteudo: "[[05-Kubernetes/calico-network]]"
+trilha: "[[00-Trilha/kubernetes]]"
 ---
 
 # Exercícios — Calico Network

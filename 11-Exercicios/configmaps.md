@@ -27,8 +27,8 @@ trilha: "[[00-Trilha/kubernetes]]"
 **Missão:** Faça um mapeamento completo dos ConfigMaps do cluster sem alterar nada.
 
 **Requisitos:**
-- [ ] Listar todos os ConfigMaps de todos os namespaces: `kubectl get cm -A`
-- [ ] Contar quantas chaves tem cada ConfigMap no namespace `kube-system` (usar `-o yaml` ou `jsonpath`)
+- [x] Listar todos os ConfigMaps de todos os namespaces: `kubectl get cm -A`
+- [x] Contar quantas chaves tem cada ConfigMap no namespace `kube-system` (usar `-o yaml` ou `jsonpath`)
 - [ ] Para o namespace `databases`: listar os ConfigMaps e ver quais chaves cada um tem (sem ver os valores)
 - [ ] Identificar quais ConfigMaps do cluster têm `immutable: true` (usar `-o yaml` e grep, ou jsonpath)
 - [ ] Para um ConfigMap qualquer, verificar qual Deployment o referencia (procurar em `describe deployment` ou `get deployment -o yaml`)

@@ -1,14 +1,13 @@
 ---
 tags:
   - exercicios
-  - networking
   - linux
   - ssh
   - openssh
 tipo: exercicios
-area: networking
-conteudo: "[[02-Networking/ssh-openssh]]"
-trilha: "[[00-Trilha/networking]]"
+area: linux
+conteudo: "[[01-Linux/ssh-openssh]]"
+trilha: "[[00-Trilha/linux]]"
 ---
 
 # Exercícios — SSH / OpenSSH

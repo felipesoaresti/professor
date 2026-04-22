@@ -29,14 +29,14 @@ trilha: "[[00-Trilha/kubernetes]]"
 **Missão:** Produza um inventário completo do cluster usando apenas comandos de leitura.
 
 **Requisitos:**
-- [ ] Listar todos os nodes com IPs, roles e status: `kubectl get nodes -o wide`
-- [ ] Listar todos os namespaces existentes
-- [ ] Listar todos os Pods em todos os namespaces: `kubectl get pods -A -o wide`
-- [ ] Identificar em qual node cada Pod do namespace `databases` está rodando
-- [ ] Ver os detalhes completos de `k8s-worker1`: taints, recursos alocados, Pods agendados
-- [ ] Listar todos os Deployments e Services do namespace `databases`
-- [ ] Verificar os componentes do control plane: `kubectl get pods -n kube-system`
-- [ ] Verificar o uso de recursos dos nodes: `kubectl top nodes`
+- [x] Listar todos os nodes com IPs, roles e status: `kubectl get nodes -o wide`
+- [x] Listar todos os namespaces existentes
+- [x] Listar todos os Pods em todos os namespaces: `kubectl get pods -A -o wide`
+- [x] Identificar em qual node cada Pod do namespace `databases` está rodando
+- [x] Ver os detalhes completos de `k8s-worker1`: taints, recursos alocados, Pods agendados
+- [x] Listar todos os Deployments e Services do namespace `databases`
+- [x] Verificar os componentes do control plane: `kubectl get pods -n kube-system`
+- [x] Verificar o uso de recursos dos nodes: `kubectl top nodes`
 
 **Verificação:**
 ```bash
@@ -59,14 +59,14 @@ sudo kubectl describe node k8s-worker1
 **Missão:** Criar um Pod nginx no namespace `estudo` e explorar seu ciclo de vida completo.
 
 **Requisitos:**
-- [ ] Criar namespace `estudo`
-- [ ] Criar um Pod chamado `meu-nginx` com imagem `nginx:1.27`, label `app=meu-nginx`, no namespace `estudo`
-- [ ] Verificar que o Pod entrou em `Running` (qual node ele foi para?)
-- [ ] Ver os logs do Pod
-- [ ] Entrar no container e executar `curl localhost` — qual o retorno?
-- [ ] Verificar o IP do Pod: `kubectl get pod meu-nginx -n estudo -o wide`
-- [ ] Deletar o Pod e confirmar que ele sumiu
-- [ ] Tentar recriar o Pod com o mesmo nome imediatamente — o IP é o mesmo?
+- [x] Criar namespace `estudo`
+- [x] Criar um Pod chamado `meu-nginx` com imagem `nginx:1.27`, label `app=meu-nginx`, no namespace `estudo`
+- [x] Verificar que o Pod entrou em `Running` (qual node ele foi para?)
+- [x] Ver os logs do Pod
+- [x] Entrar no container e executar `curl localhost` — qual o retorno?
+- [x] Verificar o IP do Pod: `kubectl get pod meu-nginx -n estudo -o wide`
+- [x] Deletar o Pod e confirmar que ele sumiu
+- [x] Tentar recriar o Pod com o mesmo nome imediatamente — o IP é o mesmo?
 
 **Verificação:**
 ```bash
@@ -89,15 +89,15 @@ sudo kubectl get pods -n estudo
 **Missão:** Criar um Deployment com 3 réplicas e provar que o K8s mantém o estado desejado sob falhas.
 
 **Requisitos:**
-- [ ] Criar Deployment `webapp` no namespace `estudo` com 3 réplicas usando `nginx:1.27`
-- [ ] Labels dos Pods: `app=webapp`
-- [ ] Definir `requests`: 100m CPU, 64Mi memória; `limits`: 200m CPU, 128Mi memória
-- [ ] Verificar a distribuição dos Pods entre os workers: `kubectl get pods -n estudo -o wide`
-- [ ] Abrir terminal com `kubectl get pods -n estudo -w` e em outro terminal deletar 1 Pod manualmente
-- [ ] Quanto tempo levou para o Pod ser recriado?
-- [ ] Deletar 2 Pods simultaneamente e observar o comportamento
-- [ ] Escalar para 5 réplicas e verificar a nova distribuição
-- [ ] Escalar de volta para 2 e observar quais Pods foram terminados (os mais novos ou os mais velhos?)
+- [x] Criar Deployment `webapp` no namespace `estudo` com 3 réplicas usando `nginx:1.27`
+- [x] Labels dos Pods: `app=webapp`
+- [x] Definir `requests`: 100m CPU, 64Mi memória; `limits`: 200m CPU, 128Mi memória
+- [x] Verificar a distribuição dos Pods entre os workers: `kubectl get pods -n estudo -o wide`
+- [x] Abrir terminal com `kubectl get pods -n estudo -w` e em outro terminal deletar 1 Pod manualmente
+- [x] Quanto tempo levou para o Pod ser recriado?
+- [x] Deletar 2 Pods simultaneamente e observar o comportamento
+- [x] Escalar para 5 réplicas e verificar a nova distribuição
+- [x] Escalar de volta para 2 e observar quais Pods foram terminados (os mais novos ou os mais velhos?)
 
 **Verificação:**
 ```bash
@@ -121,14 +121,14 @@ sudo kubectl get pods -n estudo -w
 **Missão:** Criar um Service ClusterIP, confirmar que ele encontra os Pods via labels, e testar o acesso.
 
 **Requisitos:**
-- [ ] Criar Service `webapp-svc` tipo ClusterIP na porta 80 para o Deployment `webapp` (namespace `estudo`)
-- [ ] Verificar o ClusterIP atribuído: `kubectl get svc webapp-svc -n estudo`
-- [ ] Verificar que os 3 Pods aparecem como Endpoints: `kubectl get endpoints webapp-svc -n estudo`
-- [ ] Criar Pod temporário de debug: `kubectl run debug -n estudo --image=busybox:1.36 --restart=Never -- sleep 3600`
-- [ ] De dentro do Pod de debug, acessar o webapp via DNS: `wget -qO- webapp-svc.estudo.svc.cluster.local`
-- [ ] Deletar 1 Pod do webapp — o Endpoint some e volta automaticamente?
-- [ ] Testar o acesso de fora do cluster via port-forward: `kubectl port-forward svc/webapp-svc 8080:80 -n estudo`
-- [ ] Deletar o Pod de debug e o Service ao final
+- [x] Criar Service `webapp-svc` tipo ClusterIP na porta 80 para o Deployment `webapp` (namespace `estudo`)
+- [x] Verificar o ClusterIP atribuído: `kubectl get svc webapp-svc -n estudo`
+- [x] Verificar que os 3 Pods aparecem como Endpoints: `kubectl get endpoints webapp-svc -n estudo`
+- [x] Criar Pod temporário de debug: `kubectl run debug -n estudo --image=busybox:1.36 --restart=Never -- sleep 3600`
+- [x] De dentro do Pod de debug, acessar o webapp via DNS: `wget -qO- webapp-svc.estudo.svc.cluster.local`
+- [x] Deletar 1 Pod do webapp — o Endpoint some e volta automaticamente?
+- [x] Testar o acesso de fora do cluster via port-forward: `kubectl port-forward svc/webapp-svc 8080:80 -n estudo`
+- [x] Deletar o Pod de debug e o Service ao final
 
 **Verificação:**
 ```bash
@@ -148,15 +148,15 @@ sudo kubectl exec -n estudo debug -- wget -qO- webapp-svc.estudo.svc.cluster.loc
 **Missão:** Executar um rollout controlado, forçar uma falha e praticar o rollback.
 
 **Requisitos:**
-- [ ] Atualizar a imagem do Deployment `webapp` de `nginx:1.27` para `nginx:1.27-alpine`
-- [ ] Acompanhar o rollout em tempo real até a conclusão
-- [ ] Ver o histórico de revisões (deve ter pelo menos 2)
-- [ ] Forçar um rollout com imagem inválida `nginx:versao-que-nao-existe`
-- [ ] Observar o estado do Deployment — os Pods antigos continuam rodando? (estratégia RollingUpdate)
-- [ ] Identificar o problema usando eventos do namespace
-- [ ] Fazer rollback para a última versão estável
-- [ ] Confirmar que todos os Pods voltaram ao estado `Running`
-- [ ] **Desafio:** reverter para uma revisão específica (`--to-revision=N`)
+- [x] Atualizar a imagem do Deployment `webapp` de `nginx:1.27` para `nginx:1.27-alpine`
+- [x] Acompanhar o rollout em tempo real até a conclusão
+- [x] Ver o histórico de revisões (deve ter pelo menos 2)
+- [x] Forçar um rollout com imagem inválida `nginx:versao-que-nao-existe`
+- [x] Observar o estado do Deployment — os Pods antigos continuam rodando? (estratégia RollingUpdate)
+- [x] Identificar o problema usando eventos do namespace
+- [x] Fazer rollback para a última versão estável
+- [x] Confirmar que todos os Pods voltaram ao estado `Running`
+- [x] **Desafio:** reverter para uma revisão específica (`--to-revision=N`)
 
 **Verificação:**
 ```bash
@@ -182,14 +182,14 @@ sudo kubectl rollout undo deployment/webapp -n estudo
 **Missão:** Demonstre como labels e selectors funcionam e corrija um mismatch propositalmente criado.
 
 **Requisitos:**
-- [ ] Criar um Service `mismatch-svc` com selector `app=correto` no namespace `estudo`
-- [ ] Criar 2 Pods com label `app=errado` (nome: `pod-errado-1` e `pod-errado-2`)
-- [ ] Verificar que os Endpoints estão vazios: `kubectl get endpoints mismatch-svc -n estudo`
-- [ ] Corrigir **sem deletar os Pods** — adicionar o label correto aos Pods com `kubectl label`
-- [ ] Confirmar que os Endpoints aparecem após a correção
-- [ ] Adicionar o label `version=1.0` a apenas um dos Pods
-- [ ] Criar um segundo Service `version-svc` com selector `app=correto,version=1.0`
-- [ ] Verificar que `version-svc` enxerga apenas 1 Pod nos Endpoints
+- [x] Criar um Service `mismatch-svc` com selector `app=correto` no namespace `estudo`
+- [x] Criar 2 Pods com label `app=errado` (nome: `pod-errado-1` e `pod-errado-2`)
+- [x] Verificar que os Endpoints estão vazios: `kubectl get endpoints mismatch-svc -n estudo`
+- [x] Corrigir **sem deletar os Pods** — adicionar o label correto aos Pods com `kubectl label`
+- [x] Confirmar que os Endpoints aparecem após a correção
+- [x] Adicionar o label `version=1.0` a apenas um dos Pods
+- [x] Criar um segundo Service `version-svc` com selector `app=correto,version=1.0`
+- [x] Verificar que `version-svc` enxerga apenas 1 Pod nos Endpoints
 
 **Verificação:**
 ```bash
@@ -213,18 +213,18 @@ sudo kubectl get endpoints version-svc -n estudo
 **Missão:** Use `kubectl explain` para construir um Pod YAML completo sem consultar anotações.
 
 **Requisitos:**
-- [ ] Descobrir todos os campos de primeiro nível de um Pod: `kubectl explain pod`
-- [ ] Ver a estrutura de `pod.spec`: `kubectl explain pod.spec`
-- [ ] Encontrar os campos de `resources` (requests e limits): `kubectl explain pod.spec.containers.resources`
-- [ ] Encontrar como configurar uma `readinessProbe` via explain (sem abrir o conteúdo de probes)
-- [ ] Usando apenas `kubectl explain` como referência, construir um Pod YAML com:
+- [x] Descobrir todos os campos de primeiro nível de um Pod: `kubectl explain pod`
+- [x] Ver a estrutura de `pod.spec`: `kubectl explain pod.spec`
+- [x] Encontrar os campos de `resources` (requests e limits): `kubectl explain pod.spec.containers.resources`
+- [x] Encontrar como configurar uma `readinessProbe` via explain (sem abrir o conteúdo de probes)
+- [x] Usando apenas `kubectl explain` como referência, construir um Pod YAML com:
   - namespace: `estudo`
   - image: `nginx:1.27`
   - `requests`: 50m CPU, 32Mi memória
   - `limits`: 100m CPU, 64Mi memória
   - `readinessProbe` com httpGet na porta 80, path `/`
   - `restartPolicy: Never`
-- [ ] Aplicar o Pod e confirmar que fica `Running` e `READY 1/1`
+- [x] Aplicar o Pod e confirmar que fica `Running` e `READY 1/1`
 
 **Verificação:**
 ```bash
@@ -311,14 +311,14 @@ spec:
 ```
 
 **Requisitos:**
-- [ ] Aplicar todos os 4 manifests
-- [ ] Para cada problema: identificar o sintoma exato, o motivo exato, e a correção
-- [ ] Usar o método: `get pods` → `describe pod` → `logs` → `get events`
-- [ ] Corrigir o Manifest 1: usar uma imagem válida
-- [ ] Corrigir o Manifest 2: deletar a ResourceQuota e recriar o Pod
-- [ ] Corrigir o Manifest 3: criar um Pod com o label que o Service espera
-- [ ] Corrigir o Manifest 4: mudar o command para algo que não saia com erro
-- [ ] Documentar: qual foi o sintoma (`kubectl get pods`) e qual foi a causa raiz (`describe`) de cada um?
+- [x] Aplicar todos os 4 manifests
+- [x] Para cada problema: identificar o sintoma exato, o motivo exato, e a correção
+- [x] Usar o método: `get pods` → `describe pod` → `logs` → `get events`
+- [x] Corrigir o Manifest 1: usar uma imagem válida
+- [x] Corrigir o Manifest 2: deletar a ResourceQuota e recriar o Pod
+- [x] Corrigir o Manifest 3: criar um Pod com o label que o Service espera
+- [x] Corrigir o Manifest 4: mudar o command para algo que não saia com erro
+- [x] Documentar: qual foi o sintoma (`kubectl get pods`) e qual foi a causa raiz (`describe`) de cada um?
 
 **Verificação:**
 ```bash
@@ -341,54 +341,57 @@ sudo kubectl get endpoints svc-sem-endpoints -n estudo
 **Requisitos:**
 
 **Parte A — Sidecar:**
-- [ ] Criar Pod `app-sidecar` com dois containers:
+- [x] Criar Pod `app-sidecar` com dois containers:
   - Container `app`: `nginx:1.27`, escreve logs em `/var/log/nginx/`, monta volume `logs`
   - Container `log-reader`: `busybox:1.36`, executa `tail -f /var/log/nginx/access.log`, monta o mesmo volume `logs`
   - Volume `logs`: tipo `emptyDir`
-- [ ] Confirmar que o Pod ficou `READY 2/2`
-- [ ] Fazer uma requisição para gerar log: `kubectl exec -n estudo app-sidecar -c app -- curl -s localhost`
-- [ ] Verificar o log **pelo container sidecar**: `kubectl logs app-sidecar -n estudo -c log-reader`
-- [ ] O sidecar viu a requisição sem ter acesso à porta do nginx? Por quê?
+- [x] Confirmar que o Pod ficou `READY 2/2`
+- [x] Fazer uma requisição para gerar log: `kubectl exec -n estudo app-sidecar -c app -- curl -s localhost`
+- [x] Verificar o log **pelo container sidecar**: `kubectl logs app-sidecar -n estudo -c log-reader`
+- [x] O sidecar viu a requisição sem ter acesso à porta do nginx? Por quê?
 
 **Parte B — Init Container:**
-- [ ] Criar Pod `app-init` com:
+- [x] Criar Pod `app-init` com:
   - Init container `aguarda-servico`: `busybox:1.36`, tenta `nc -z webapp-svc 80` em loop até conseguir
   - Container principal `app`: `nginx:1.27`
-- [ ] Observar o estado do Pod antes de criar o Service: `kubectl get pod app-init -n estudo -w`
-- [ ] O Pod fica em que estado? (`Init:0/1`?)
-- [ ] Criar Service `webapp-svc` apontando para qualquer Pod existente no namespace `estudo`
-- [ ] Observar o Pod `app-init` progredir para `Running` após o Service existir
-- [ ] Ver os logs do init container durante a espera: `kubectl logs app-init -n estudo -c aguarda-servico`
+- [x] Observar o estado do Pod antes de criar o Service: `kubectl get pod app-init -n estudo -w`
+- [x] O Pod fica em que estado? (`Init:0/1`?)
+- [x] Criar Service `webapp-svc` apontando para qualquer Pod existente no namespace `estudo`
+- [x] Observar o Pod `app-init` progredir para `Running` após o Service existir
+- [x] Ver os logs do init container durante a espera: `kubectl logs app-init -n estudo -c aguarda-servico`
 
 **Parte C — Ephemeral Container (debug):**
-- [ ] Criar Pod `app-sem-shell` com imagem `gcr.io/distroless/static:nonroot` (sem shell, sem ferramentas):
-  - command: `["/bin/true"]` com `restartPolicy: Never`
-- [ ] Tentar `kubectl exec -it app-sem-shell -n estudo -- /bin/sh` — o que acontece?
-- [ ] Adicionar ephemeral container de debug:
+- [x] Criar Pod `app-sem-shell` com imagem `registry.k8s.io/pause:3.9` (sem shell, sem ferramentas, roda indefinidamente):
+  - sem `command` override — use o entrypoint padrão da imagem
+- [x] Tentar `kubectl exec -it app-sem-shell -n estudo -- /bin/sh` — o que acontece?
+- [x] Adicionar ephemeral container de debug:
   ```bash
   kubectl debug -it app-sem-shell -n estudo \
     --image=busybox:1.36 \
     --target=app-sem-shell
   ```
-- [ ] Dentro do ephemeral container: executar `ps aux` — você vê o processo do container principal?
-- [ ] Verificar que o ephemeral container aparece na spec: `kubectl get pod app-sem-shell -n estudo -o jsonpath='{.spec.ephemeralContainers}'`
+- [x] Dentro do ephemeral container: executar `ps aux` — você vê o processo do container principal (`/pause`)?
+- [x] Verificar que o ephemeral container aparece na spec: `kubectl get pod app-sem-shell -n estudo -o jsonpath='{.spec.ephemeralContainers}'`
 
 **Verificação:**
 ```bash
 kubectl get pod app-sidecar -n estudo
 # READY: 2/2, STATUS: Running
 
+# Gerar log via log-reader (nginx não tem curl/wget):
+kubectl exec -n estudo app-sidecar -c log-reader -- wget -qO- http://localhost/
+
 kubectl logs app-sidecar -n estudo -c log-reader
-# Logs do nginx lidos pelo sidecar via volume compartilhado
+# Entrada de acesso HTTP do nginx lida pelo sidecar via emptyDir compartilhado
 
 kubectl get pod app-init -n estudo
 # STATUS: Init:0/1 → Running (após criar o Service)
 
 kubectl logs app-init -n estudo -c aguarda-servico
-# "aguardando..." repetido até o Service existir
+# "aguardando webapp-svc..." repetido até o Service existir
 
 kubectl get pod app-sem-shell -n estudo -o jsonpath='{.spec.ephemeralContainers[0].name}'
-# Nome do ephemeral container adicionado
+# Nome do ephemeral container adicionado (ex: debugger)
 ```
 
 ---
